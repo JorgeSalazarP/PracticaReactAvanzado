@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch,Route} from 'react-router-dom';
-import AdvertsPage from '../components/adverts/AdvertsPage/AdvertsPage';
-import NewAdvertPage from '../components/adverts/NewAdvertPage/NewAdvertPage';
-import LoginPage from '../components/auth/LoginPage/LoginPage';
+import LoginPage  from '../components/auth/LoginPage/LoginPage';
+import { AdvertPage, AdvertsPage, NewAdvertPage } from '../components/adverts';
 import Navbar  from '../components/layout/Navbar';
+
 
 const AppRouter = () => {
     return (
