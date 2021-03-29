@@ -1,0 +1,75 @@
+
+html {
+  box-sizing: border-box;
+  height: 100%;
+  font-size: 62.5%;
+}
+body {
+  min-height: 100%;
+  font-size: 1.6rem;
+}
+
+h1 {
+  font-family: var(--headingFont);
+  font-weight: 900;
+  margin: 0 0 4rem 0;
+  text-align: center;
+  color:  #5123e6;
+  font-size: 3rem;
+}
+
+
+.btn {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  font-size: 1.4rem;
+  font-weight: 400;
+  border-radius: 0.5rem;
+  border: none;
+  
+}
+
+.user_form {
+  height: 100vh;
+  min-height: 800px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: radial-gradient(circle at 50% -20.71%, #ff57d2 0, #ff4edb 12.5%, #f046e3 25%, #d63feb 37.5%, #b53cf2 50%, #8c3df9 62.5%, #4f40ff 75%, #0046ff 87.5%, #004bff 100%);
+  
+}
+
+.container_form {
+  padding: 5rem 3rem;
+  max-width: 500px;
+  width: 95%;
+  background-color: #fff;
+  border-radius: 1rem;
+}
+
+.form_field {
+  display: flex;
+  margin-bottom: 2rem;
+  align-items: center;
+}
+
+.form_field label {
+  flex: 0 0 100px;
+  color: #1c1b1d;
+  font-size: 1.8rem ;
+  font-weight: bold;
+
+}
+.form_field input[type="password"],
+.form_field input[type="email"] {
+
+  padding: 1rem;
+  flex: 1;
+}
+
+.btn{
+
+    background-color: #5123e6;
+    color: #fff;
+    font-size: 1.8rem;
+}
