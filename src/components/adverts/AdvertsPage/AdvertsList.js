@@ -3,10 +3,14 @@ import { Link } from 'react-router-dom';
 
 
 const AdvertsList = ({id,name,sale,price,tags,photo}) => {
-
+    let isBuy = 'buy';
+    if(!sale){
+     
+         isBuy = 'sell';
+    }
     return ( 
-        <Link>
-            <div className="card ms-3" style={ { maxWidth: 600 } }>
+        <Link to={`./adverts/${id}`}>
+            <div className="card ms-3" style={ { maxWidth: 300 } }>
                 <div className="row no-gutters">
                     <div className="col-md-4">
 
@@ -16,8 +20,8 @@ const AdvertsList = ({id,name,sale,price,tags,photo}) => {
 
                         <div className="card-body">
                             <h3 className="card-title"> {name}</h3>
-                            <p className="card-text"> {sale} </p>
                             <p className="card-text"> {price}€ </p>
+                            <p className="card-text"> {isBuy} </p>
                             <p className="card-text"> {tags} </p>
                         </div>
 

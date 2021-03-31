@@ -10,9 +10,9 @@ const DashboardRoutes = () => {
             <Navbar/>
             <div className = "container mt-5">
                 <Switch>
-                    <Route exact path='/adverts'component={AdvertsPage}/>
-                    <Route exact path='/advert/:id'component={AdvertPage}/>
-                    <Route exact path='/advert/new'component={NewAdvertPage}/>
+                    <Route exact path='/adverts' component={AdvertsPage}/>
+                    <Route exact path='/adverts/:id' component={AdvertPage}/>
+                    <Route exact path='/advert/new' component={NewAdvertPage}/>
                     <Redirect to= '/adverts'/>
                     
                 </Switch>

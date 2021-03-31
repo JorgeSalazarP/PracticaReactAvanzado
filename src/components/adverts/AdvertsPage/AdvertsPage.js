@@ -7,6 +7,7 @@ import AdvertsList from './AdvertsList';
 const AdvertsPage = () => {
 
     
+    
     //const [adverts, setAdverts] = React.useState([]);
     
     // React.useEffect(()=>{
@@ -23,7 +24,6 @@ const AdvertsPage = () => {
                     key={advert.id}
                     {...advert}
                 />
-               
             ))} 
             
         </div>
