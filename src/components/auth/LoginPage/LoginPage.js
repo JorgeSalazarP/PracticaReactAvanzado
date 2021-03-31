@@ -33,8 +33,9 @@ const LoginPage = () => {
                     </div>
 
                     <div className="form_field">
-                        <input type="submit" className="btn btn-lg btn-block" value="Iniciar Sesión" />
+                        <input type="submit" className="btn btn-primary btn-lg btn-block" value="Iniciar Sesión" />
                     </div>
+                    
                 </form>
 
                 

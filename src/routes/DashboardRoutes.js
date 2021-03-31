@@ -8,7 +8,7 @@ const DashboardRoutes = () => {
         
         <div>
             <Navbar/>
-            <div>
+            <div className = "container mt-5">
                 <Switch>
                     <Route exact path='/adverts'component={AdvertsPage}/>
                     <Route exact path='/advert/:id'component={AdvertPage}/>
