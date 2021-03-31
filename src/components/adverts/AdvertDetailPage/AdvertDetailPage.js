@@ -1,8 +1,8 @@
 import React from 'react';
 import { Redirect, useParams } from 'react-router-dom';
-import getAdvertId from '../../../querys/getAdvertId';
+import { getAdvertId } from '../../../querys/getAdvertId';
 
-const AdvertPage = () => {
+const AdvertDetailPage = ({history}) => {
 
     const { id } = useParams();
     const currentAdvert = getAdvertId(id);
@@ -11,8 +11,9 @@ const AdvertPage = () => {
 
         return <Redirect to='/' />
     }
-
     const {name,sale,price,tags,photo} = currentAdvert;
+
+    const handleGoBack = () =>(history.length > 2 ? history.goBack() : history.push('/'));
     
     
     return (
@@ -24,7 +25,7 @@ const AdvertPage = () => {
                 />
             </div>
 
-            <div className="col-8 animate__animated animate__fadeIn">
+            <div className="col-8 ">
                 <h3> { name } </h3>
                 <ul className="list-group list-group-flush">
                     <li className="list-group-item">  { price }€  </li>
@@ -33,7 +34,7 @@ const AdvertPage = () => {
                 </ul>
                 <button 
                     className="btn btn-outline-info"
-                   // onClick={ handleReturn }
+                    onClick={ handleGoBack }
                 >
                     Return
                 </button>
@@ -43,4 +44,4 @@ const AdvertPage = () => {
         </div>
     )
 }
-export default AdvertPage;
+export default AdvertDetailPage;
