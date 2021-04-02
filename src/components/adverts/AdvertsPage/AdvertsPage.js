@@ -6,12 +6,13 @@ import AdvertsList from './AdvertsList';
 
 const AdvertsPage = () => {
 
+    //console.log(getAdverts).then();
     
-    
-    //const [adverts, setAdverts] = React.useState([]);
-    
+    // const [adverts, setAdverts] = React.useState([]);
+    // getAdverts(setAdverts).then();
+    // console.log(setAverts);
     // React.useEffect(()=>{
-    //     getAdverts(setAdverts);
+    //     
     // },[]);
 
     

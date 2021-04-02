@@ -4,6 +4,5 @@ export const getAdvertId = (id) => {
     
     return getAdverts.find(advert=> advert.id === id);
 
-  
 }
  

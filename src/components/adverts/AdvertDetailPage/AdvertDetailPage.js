@@ -1,6 +1,6 @@
 import React from 'react';
 import { Redirect, useParams } from 'react-router-dom';
-import { getAdvertId } from '../../../querys/getAdvertId';
+import { getAdvertId } from '../../../filters/getAdvertId';
 
 const AdvertDetailPage = ({history}) => {
 

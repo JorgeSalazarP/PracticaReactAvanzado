@@ -1,13 +1,18 @@
 import client from './client';
+const BASE_URL = '/api';
 
-// const advertsBaseURL = '/api';
+
 // export const getAdverts = () =>{
-
-    
-//         const url = `${advertsBaseURL}/`;
-//         return client.get(url);
+//     const url = `${advertsBaseURL}/adverts`;
+//     return client.get(url);
       
-// }
+// // }
+
+export const login = credentials =>{
+
+  return client.post(`${BASE_URL}/auth/login`,credentials);
+
+}
 
 
 export const getAdverts = [

@@ -9,7 +9,7 @@ const AdvertsList = ({id,name,sale,price,tags,photo}) => {
          isBuy = 'sell';
     }
     return ( 
-        <Link to={`./adverts/${id}`}>
+       
             <div className="card ms-3" style={ { maxWidth: 300 } }>
                 <div className="row no-gutters">
                     <div className="col-md-4">
@@ -27,8 +27,11 @@ const AdvertsList = ({id,name,sale,price,tags,photo}) => {
 
                     </div>
                 </div>
+
+                <Link className="btn btn-block" to={`./adverts/${id}`}>
+                    More...
+                </Link>
             </div>
-        </Link>
      );
 }
  
