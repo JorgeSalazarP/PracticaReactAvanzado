@@ -67,6 +67,10 @@ h1 {
   flex: 1;
 }
 
+input[type="checkbox"]{
+  cursor: pointer;
+}
+
 .btn{
 
     background-color: #5123e6;

@@ -3,24 +3,20 @@ import { getAdverts } from '../../../api/adverts';
 import AdvertsList from './AdvertsList';
 
 
-
 const AdvertsPage = () => {
 
-    //console.log(getAdverts).then();
+    const [adverts, setAdverts] = React.useState([]);
     
-    // const [adverts, setAdverts] = React.useState([]);
-    // getAdverts(setAdverts).then();
-    // console.log(setAverts);
-    // React.useEffect(()=>{
-    //     
-    // },[]);
+    React.useEffect(()=>{
+        getAdverts().then(setAdverts);
+    },[]);
 
     
     return (
         <div className="card-columns">
         
-            {getAdverts.map(advert=>(
-              
+            {adverts.map(advert=>(
+                
                 <AdvertsList
                     key={advert.id}
                     {...advert}

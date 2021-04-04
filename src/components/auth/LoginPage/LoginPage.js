@@ -6,13 +6,15 @@ import { AuthContext } from '../../../context/AuthContext';
 import { LoadingContext } from '../../../context/LoadingContext';
 import LoginForm from './LoginForm';
 import './LoginPage.css';
+import { RememberContext } from '../../../context/RememberPassword';
 
 
 
 const LoginPage = ({history}) => {
 
-    const {isLogged, setIsLogged} = React.useContext(AuthContext);
-    const {isLoading, setIsLoading} = React.useContext(LoadingContext);
+    const { setIsLogged } = React.useContext(AuthContext);
+    const {setIsChecked} =  React.useContext(RememberContext);
+    const { isLoading, setIsLoading } = React.useContext(LoadingContext);
     const [error,setError] = React.useState(null);
 
     const handleSubmit = async credentials =>{
@@ -21,8 +23,8 @@ const LoginPage = ({history}) => {
             setIsLoading(true);
             setError(null);
             await login(credentials);
-            history.replace('/');
             setIsLogged(true);
+            history.replace('/');
             
         } catch (error) {
             setError(error);
@@ -37,7 +39,10 @@ const LoginPage = ({history}) => {
         
         <div className="user_form">
                
-            <LoginForm onSubmit={handleSubmit} />
+            <LoginForm 
+                onSubmit={handleSubmit}
+                setIsChecked={setIsChecked}
+            />
             {error && <Error message={error.message}/>}
 
             { isLoading && <Spinner/>}

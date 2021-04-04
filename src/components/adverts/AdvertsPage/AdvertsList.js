@@ -12,10 +12,7 @@ const AdvertsList = ({id,name,sale,price,tags,photo}) => {
        
             <div className="card ms-3" style={ { maxWidth: 300 } }>
                 <div className="row no-gutters">
-                    <div className="col-md-4">
-
-                        <img src={ `../uploads/futbol.jpg` } className="card-img" alt={ name } />
-                    </div>
+                    
                     <div className="col-md-8">
 
                         <div className="card-body">

@@ -1,15 +1,16 @@
 import React from 'react';
 
-const LoginForm = ({ onSubmit }) => {
+const LoginForm = ({ onSubmit, setIsChecked }) => {
 
     const [credentials,setCredentials] = React.useState({        
         email: '',
         password: ''
     });
 
+
     const {email,password} = credentials;
 
-    const handleChange = (ev) =>{
+    const handleChange = ev =>{
 
         setCredentials(oldCredentials => ({
             ...oldCredentials,
@@ -17,6 +18,7 @@ const LoginForm = ({ onSubmit }) => {
           }));
 
     }
+
 
     const handleSubmit = (ev) =>{
         ev.preventDefault();
@@ -36,7 +38,6 @@ const LoginForm = ({ onSubmit }) => {
                         <label htmlFor="email">Email</label>
                         <input 
                             type="email"
-                            id="email"
                             name="email"
                             value={email}
                             onChange={handleChange}
@@ -47,10 +48,17 @@ const LoginForm = ({ onSubmit }) => {
                         <label htmlFor="password">Password</label>
                         <input 
                             type="password"
-                            id="password"
                             name="password"
                             value={password}
                             onChange={handleChange}
+                        />
+                    </div>
+                    <div className="form_field">
+                        <label htmlFor="checkbox">Remember password</label>
+                        <input 
+                            type="checkbox"
+                            name="checkbox"
+                            onChange={(ev)=>setIsChecked(ev.target.checked)}
                         />
                     </div>
 

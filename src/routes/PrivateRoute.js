@@ -8,11 +8,11 @@ const PrivateRoute = props => {
   const { isLogged } = React.useContext(AuthContext);
 
   return isLogged ? (
-    <Route to='/adverts'{...props} />
+    <Route {...props} />
   ) : (
     <Route>
       {({ location }) => (
-        <Redirect to='/login' />
+        <Redirect to={{ pathname: '/login', state: { from: location } }} />
       )}
     </Route>
   );
