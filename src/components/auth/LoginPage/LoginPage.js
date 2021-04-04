@@ -1,6 +1,5 @@
 import React from 'react';
 import { login } from '../../../api/auth';
-import { types } from '../../../types/types';
 import Error from '../../error/Error';
 import Spinner from '../../shared/Spinner';
 import { AuthContext } from '../../../context/AuthContext';
@@ -10,22 +9,28 @@ import './LoginPage.css';
 
 
 
-const LoginPage = () => {
+const LoginPage = ({history}) => {
 
     const {isLogged, setIsLogged} = React.useContext(AuthContext);
     const {isLoading, setIsLoading} = React.useContext(LoadingContext);
     const [error,setError] = React.useState(null);
 
     const handleSubmit = async credentials =>{
+
         try {
             setIsLoading(true);
+            setError(null);
             await login(credentials);
+            history.replace('/');
             setIsLogged(true);
+            
         } catch (error) {
             setError(error);
         }finally{
-           setIsLoading(false);
+            setIsLoading(false);
+            
         }
+
     }
 
     return (
@@ -34,7 +39,7 @@ const LoginPage = () => {
                
             <LoginForm onSubmit={handleSubmit} />
             {error && <Error message={error.message}/>}
-            
+
             { isLoading && <Spinner/>}
            
 

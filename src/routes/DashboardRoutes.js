@@ -14,7 +14,7 @@ const DashboardRoutes = () => {
                     <Route exact path='/adverts' component={AdvertsPage}/>
                     <Route exact path='/adverts/:id' component={AdvertDetailPage}/>
                     <Route exact path='/advert/new' component={NewAdvertPage}/>
-                    <Route exact path='/search' component={FiltersAdverts}/>
+                    {/* <Route exact path='/search' component={FiltersAdverts}/> */}
                     <Redirect to= '/adverts'/>
                     
                 </Switch>

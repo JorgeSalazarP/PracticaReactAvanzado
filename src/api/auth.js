@@ -10,9 +10,9 @@ export const login = credentials => {
   });
 };
 
-// export const logout = () => {
-//   return Promise.resolve().then(() => {
-//     resetClient();
-//     storage.remove('auth');
-//   });
-//};
+export const logout = () => {
+  return Promise.resolve().then(() => {
+    resetClient();
+    storage.remove('auth');
+  });
+};

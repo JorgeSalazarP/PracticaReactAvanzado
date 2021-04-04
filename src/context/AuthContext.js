@@ -1,8 +1,8 @@
 import React from 'react';
 
 export const AuthContext = React.createContext();
-const AuthContextProvider = (props) => {
-    const [isLogged,setIsLogged] = React.useState(false);
+const AuthContextProvider = ({isInitiallyLogged,...props}) => {
+    const [isLogged,setIsLogged] = React.useState(isInitiallyLogged);
 
     return (
         <AuthContext.Provider
