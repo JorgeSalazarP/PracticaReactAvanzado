@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import { types } from '../../types/types';
-import { AuthContext } from '../auth/LoginPage/AuthContext';
+import { AuthContext } from '../../context/AuthContext';
 
 export const Header = () => {
 

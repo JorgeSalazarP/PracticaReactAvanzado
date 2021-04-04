@@ -1,5 +1,5 @@
 import client from './client';
-const BASE_URL = '/api';
+export const BASE_URL = '/api';
 
 
 // export const getAdverts = () =>{
@@ -8,11 +8,11 @@ const BASE_URL = '/api';
       
 // // }
 
-export const login = credentials =>{
+// export const login = credentials =>{
 
-  return client.post(`${BASE_URL}/auth/login`,credentials);
+//   return client.post(`${BASE_URL}/auth/login`,credentials);
 
-}
+// }
 
 
 export const getAdverts = [

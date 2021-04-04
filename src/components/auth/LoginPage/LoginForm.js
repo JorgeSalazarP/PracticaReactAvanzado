@@ -25,7 +25,7 @@ const LoginForm = ({ onSubmit }) => {
 
     return (  
 
-        <div className="container container_form">
+        <div className="container container_form ">
 
                 <h1>Login in to Nodepop</h1>
 
@@ -55,7 +55,12 @@ const LoginForm = ({ onSubmit }) => {
                     </div>
 
                     <div className="form_field">
-                        <input type="submit" className="btn btn-primary btn-lg btn-block" value="Login in" />
+                        <input 
+                            type="submit" 
+                            className="btn btn-primary btn-lg btn-block" 
+                            value="Login in" 
+                            disabled={!email || !password}
+                        />
                     </div>
                     
                 </form>
