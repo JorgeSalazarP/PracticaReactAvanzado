@@ -9,23 +9,21 @@ import './LoginPage.css';
 
 
 
-const LoginPage = ({history}) => {
+const LoginPage = () => {
 
     const { setIsLogged } = React.useContext(AuthContext);
     const { isLoading, setIsLoading } = React.useContext(LoadingContext);
     const [error,setError] = React.useState(null);
     const [isChecked, setIsChecked] = React.useState(false);
 
-    
+   
     const handleSubmit = async (credentials) =>{
         
         try {
             setIsLoading(true);
             setError(null);
-
             await login(credentials,isChecked);
             setIsLogged(true);
-            
             
         } catch (error) {
             setError(error);

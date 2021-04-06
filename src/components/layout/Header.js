@@ -42,17 +42,10 @@ export const Header = () => {
                         activeClassName="active"
                         className="nav-item nav-link" 
                         exact
-                        to="/advert/new"
+                        to="/advert"
                     >
                         New Adverts
-                    </NavLink>
-                    <NavLink 
-                        activeClassName="active"
-                        className="nav-item nav-link" 
-                        exact
-                        to="/search"
-                    >
-                        Search
+                    
                     </NavLink>
                 </div>
             </div>
