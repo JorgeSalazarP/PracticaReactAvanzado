@@ -13,6 +13,7 @@ const storage = {
 
   remove(key) {
   localStorage.removeItem(key);
+  
   },
 };
   

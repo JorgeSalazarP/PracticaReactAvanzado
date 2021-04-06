@@ -4,11 +4,20 @@ import { logout } from '../../api/auth';
 import { AuthContext } from '../../context/AuthContext';
 
 
+
+
 export const Header = () => {
 
     const history = useHistory();
+   
+    const { setIsLogged } = React.useContext(AuthContext);
+    
+    
+    
     const handleClick = () =>{
         logout();
+        setIsLogged(false);
+     
         history.replace('/login');
 
     }

@@ -1,13 +1,12 @@
 import React from 'react';
 
+
 const LoginForm = ({ onSubmit, setIsChecked }) => {
 
     const [credentials,setCredentials] = React.useState({        
         email: '',
         password: ''
     });
-
-
     const {email,password} = credentials;
 
     const handleChange = ev =>{
@@ -19,9 +18,8 @@ const LoginForm = ({ onSubmit, setIsChecked }) => {
 
     }
 
-
     const handleSubmit = (ev) =>{
-        ev.preventDefault();
+        ev.preventDefault();        
         onSubmit(credentials);
     }
 

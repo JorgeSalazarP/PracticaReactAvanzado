@@ -1,9 +1,7 @@
 import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
 
-
-
-const PrivateRoute = ({
+const PublicRoute = ({
   isLogged,
   component: Component,
   ...rest
@@ -14,14 +12,14 @@ const PrivateRoute = ({
   <Route { ...rest }
 
     component={ (props) => (
-      ( isLogged )
+      ( !isLogged )
         ? ( <Component { ...props } /> )
-        : ( <Redirect to='/login' /> )
+        : ( <Redirect to='/' /> )
     )}
 
   />);
 };
 
-export default PrivateRoute;
+export default PublicRoute;
 
 

@@ -3,7 +3,7 @@ import { getAdverts } from '../../../api/adverts';
 import AdvertsList from './AdvertsList';
 
 
-const AdvertsPage = () => {
+const AdvertsPage = ({history}) => {
 
     const [adverts, setAdverts] = React.useState([]);
     
