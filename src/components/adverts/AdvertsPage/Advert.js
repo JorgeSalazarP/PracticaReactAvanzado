@@ -10,7 +10,7 @@ const Advert = ({id,name,sale,price,tags,photo}) => {
                 <p className="card-text"> {sale ? 'Buy': 'Sell'} </p>
                 <p className="card-text"> {tags} </p>
             </div>
-            <Link className="btn btn-block" to={`./adverts/${id}`}>
+            <Link className="btn btn-block" to={`./advert/${id}`}>
                     More...
             </Link>
         </div>

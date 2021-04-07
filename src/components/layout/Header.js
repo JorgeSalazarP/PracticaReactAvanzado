@@ -17,7 +17,7 @@ export const Header = () => {
     const handleClick = () =>{
         logout();
         setIsLogged(false);
-     
+    
         history.replace('/login');
 
     }
@@ -33,7 +33,7 @@ export const Header = () => {
                         activeClassName="active"
                         className="nav-item nav-link" 
                         exact
-                        to="/"
+                        to='/'
                     >
                         Adverts
                     </NavLink>
@@ -42,7 +42,7 @@ export const Header = () => {
                         activeClassName="active"
                         className="nav-item nav-link" 
                         exact
-                        to="/advert"
+                        to='/advert/new'
                     >
                         New Adverts
                     

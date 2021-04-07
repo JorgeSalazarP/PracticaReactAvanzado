@@ -5,16 +5,31 @@ import { AdvertDetailPage, AdvertsPage, NewAdvertPage } from '../components/adve
 
 
 const DashboardRoutes = () => {
+    
     return (
         
         <div>
             <Header />
             <div className = "container mt-5">
                 <Switch>
+                    <Route exact path='/advert/new' component={NewAdvertPage}/>
+                    <Route path='/advert/:id' component={AdvertDetailPage}/>
+                    <Route exact path='/' component={AdvertsPage}/>
                     <Route exact path='/adverts' component={AdvertsPage}/>
-                    <Route exact path='/advert/:id' component={AdvertDetailPage}/>
-                    <Route exact path='/advert' component={NewAdvertPage}/>
-                    <Redirect to= '/adverts'/>
+                    <Route path="/404">
+                        <div
+                            style={{
+                                textAlign: 'center',
+                                fontSize: 48,
+                                fontWeight: 'bold',
+                            }}
+                        >
+                        404 | Not found page
+                        </div>
+                    </Route>
+                    <Route>
+                        <Redirect to="/404" />
+                    </Route>
                     
                 </Switch>
             </div>

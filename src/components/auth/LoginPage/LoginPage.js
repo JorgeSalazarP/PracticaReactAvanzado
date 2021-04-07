@@ -24,6 +24,7 @@ const LoginPage = () => {
             setError(null);
             await login(credentials,isChecked);
             setIsLogged(true);
+           
             
         } catch (error) {
             setError(error);

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const EmptyList = () => (
     <div style={{ textAlign: 'center' }}>
       <p>Be the first advert!</p>
-      <Link className="btn" to="/advert" >
+      <Link className="btn" to='/advert/new' >
         Advert
       </Link>
     
