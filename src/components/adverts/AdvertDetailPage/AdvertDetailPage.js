@@ -19,7 +19,6 @@ const AdvertDetailPage = ({ history }) => {
             } catch (error) {
                 history.replace('/404');
             }finally{
-    
                 setIsLoading(false);
             }
         }
@@ -30,7 +29,7 @@ const AdvertDetailPage = ({ history }) => {
 
     
     const onClickDeleteAdvert = async ()=>{
-        const deleteConfirmed = window.confirm('Are you sure?');
+        const deleteConfirmed = window.confirm('Are you sure to delete this advert?');
         if (deleteConfirmed) {
            await deleteAdvert(id);
            history.push('/');
