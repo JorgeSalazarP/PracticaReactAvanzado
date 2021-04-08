@@ -8,6 +8,7 @@ import { getSearchAdverts } from './getSearchAdverts';
  
 
 
+
 const FiltersAdverts = ({ history }) => {
     
     

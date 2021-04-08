@@ -1,47 +1,43 @@
 import React from 'react';
-import { Redirect, useParams } from 'react-router-dom';
-import { getAdvertId } from '../../../filters/getAdvertId';
+import { useParams } from 'react-router-dom';
+import { getAdvertDetail } from '../../../api/adverts';
+import { LoadingContext } from '../../../context/LoadingContext';
+import Spinner from '../../shared/Spinner';
+import AdvertDetail from './AdvertDetail';
 
-const AdvertDetailPage = ({history}) => {
-
+const AdvertDetailPage = ({ history }) => {
+    
     const { id } = useParams();
-    const currentAdvert = getAdvertId(id);
-
-    if( !currentAdvert ){
-
-        return <Redirect to='/' />
-    }
-    const {name,sale,price,tags,photo} = currentAdvert;
-
-    const handleGoBack = () =>(history.length > 2 ? history.goBack() : history.push('/'));
+    const {isLoading,setIsLoading} = React.useContext(LoadingContext);
+    const [advertDetail, setAdvertDetail] = React.useState([]);
+   
+    React.useEffect(()=>{
+        async function getAdvertById(){
+            try {
+                setIsLoading(true);
+                setAdvertDetail(await getAdvertDetail(id));
+            } catch (error) {
+                history.replace('/404');
+            }finally{
     
-    
+                setIsLoading(false);
+            }
+        }
+
+        getAdvertById();
+        
+    },[]);
+  
     return (
-        <div className="row mt-5">
-            <div className="col-4">
-                <img 
-                    src={ `../uploads/futbol.jpg` }
-                    className="img-thumbnail animate__animated animate__fadeInLeft"
-                />
-            </div>
 
-            <div className="col-8 ">
-                <h3> { name } </h3>
-                <ul className="list-group list-group-flush">
-                    <li className="list-group-item">  { price }€  </li>
-                    <li className="list-group-item"> <b> Buy or Sell: </b> { sale } </li>
-                    <li className="list-group-item"> <b> Tag: </b> { tags } </li>
-                </ul>
-                <button 
-                    className="btn btn-outline-info"
-                    onClick={ handleGoBack }
-                >
-                    Return
-                </button>
-
-            </div>
-
-        </div>
+        <React.Fragment>
+            { isLoading && <Spinner/>}
+            <AdvertDetail advertDetail {...advertDetail}/> 
+        </React.Fragment>
     )
+    
+   
+    
+    
 }
 export default AdvertDetailPage;

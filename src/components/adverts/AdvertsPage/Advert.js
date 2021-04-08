@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Advert = ({id,name,sale,price,tags,photo}) => {
+const Advert = ({id,name,sale,price,tags}) => {
     return (  
         <div className="card bg-light mb-3" style={ { maxWidth: 300 } }>
             <div className="card-header">{name}</div>

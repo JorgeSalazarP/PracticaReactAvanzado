@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { getAdverts } from '../../../api/adverts';
 import AdvertsList from './AdvertsList';
 import EmptyList from './EmptyList';
@@ -15,9 +15,9 @@ const AdvertsPage = () => {
     
     return (
         
-      <Fragment>
-            {!adverts.length ? <AdvertsList adverts={adverts} /> : <EmptyList />}
-      </Fragment>
+      <React.Fragment>
+            {adverts.length ? <AdvertsList adverts={adverts} /> : <EmptyList />}
+      </React.Fragment>
         
     )
 }
