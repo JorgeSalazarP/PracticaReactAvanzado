@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { getAdvertDetail } from '../../../api/adverts';
+import { getAdvertDetail, deleteAdvert } from '../../../api/adverts';
 import { LoadingContext } from '../../../context/LoadingContext';
 import Spinner from '../../shared/Spinner';
 import AdvertDetail from './AdvertDetail';
@@ -27,12 +27,25 @@ const AdvertDetailPage = ({ history }) => {
         getAdvertById();
         
     },[]);
+
+    
+    const onClickDeleteAdvert = async ()=>{
+        const deleteConfirmed = window.confirm('Are you sure?');
+        if (deleteConfirmed) {
+           await deleteAdvert(id);
+           history.push('/');
+        }
+    }
+
   
     return (
 
         <React.Fragment>
             { isLoading && <Spinner/>}
-            <AdvertDetail advertDetail {...advertDetail}/> 
+            <AdvertDetail 
+                advertDetail {...advertDetail}
+                onClickDeleteAdvert={onClickDeleteAdvert}
+            /> 
         </React.Fragment>
     )
     

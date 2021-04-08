@@ -1,11 +1,9 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
-const AdvertDetail = ({name,price,photo,sale,tags}) => {
+const AdvertDetail = ({name,price,photo,sale,tags,onClickDeleteAdvert}) => {
     
     const history = useHistory();
-    
-    const handleClickReturn = ()=>(history.goBack());
     
     return (
 
@@ -27,13 +25,13 @@ const AdvertDetail = ({name,price,photo,sale,tags}) => {
                     </ul>
                     <button 
                         className="btn btn-outline-info"
-                        onClick={ handleClickReturn }
+                        onClick={ ()=>(history.goBack()) }
                     >
                         Return
                     </button>
                     <button 
                         className="btn btn-outline-info"
-                        onClick={ handleClickDelete }
+                        onClick={ onClickDeleteAdvert }
                     >
                         Delete
                     </button>
