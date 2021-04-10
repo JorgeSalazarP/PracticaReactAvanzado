@@ -7,15 +7,15 @@ const NewAdvertForm = ({tagsAPI, saveNewAdvert}) => {
     const [contentNewAdvert,setContentNewAdvert] = React.useState({
         name:'',
         price: 0,
-        sale: 'Buy',
+        sale: true,
         photo: null,
-        tags: []
+        tags:[]
         
     });
     
     const [selectedTags,setSelectedTags] = React.useState([]);
     const [error,setError] = React.useState(null);
-    const {name,price,sale} = contentNewAdvert;
+    const {name,price,sale,tags} = contentNewAdvert;
 
     const handleChange = ev =>{
         setContentNewAdvert(oldContentNewAdvert => ({
@@ -71,28 +71,15 @@ const NewAdvertForm = ({tagsAPI, saveNewAdvert}) => {
     
     const handleSubmit = ev =>{
         
-        ev.preventDefault();
         setError(null);
+        ev.preventDefault();
         if(validationForm()){
-            let isBuy = true
-            if(sale ==='Sell'){
-                isBuy=false;
-            }else{
-                isBuy = true;
-            }
-            console.log(isBuy)
-            setContentNewAdvert(oldContentNewAdvert => ({
-                ...oldContentNewAdvert,
-                tags: {...selectedTags},
-                sale: isBuy
-                
-               
-            }));
             
-        }
+            setSelectedTags(contentNewAdvert.tags={...selectedTags});
+            saveNewAdvert(contentNewAdvert);
 
-        
-       
+          
+        }
     }
 
 
@@ -127,9 +114,9 @@ const NewAdvertForm = ({tagsAPI, saveNewAdvert}) => {
                 name="sale"
                 onChange={handleChange}
             >
-                
-                <option selected>Buy</option>
-                <option>Sell</option>
+
+                <option value={sale===sale}>Buy</option>
+                <option value={sale!==sale}>Sell</option>
             </select>
             <div className="form-check form-check-inline">
                 {tagsAPI.map(tag=>(

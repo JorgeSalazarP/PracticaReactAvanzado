@@ -31,7 +31,15 @@ const NewAdvertPage = ({history}) => {
 
     const saveNewAdvert = newAdvert =>{
 
-        
+        console.log(newAdvert);
+
+        if(newAdvert.sale==="true"){
+            newAdvert.sale=true;
+        }else{
+            newAdvert.sale=false;
+        }
+        console.log(newAdvert);
+
     }
 
     return (
