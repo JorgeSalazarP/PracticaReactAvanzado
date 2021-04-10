@@ -8,7 +8,8 @@ const NewAdvertForm = ({tagsAPI}) => {
         price:0,
         sale:'Buy',
         photo:'', 
-        
+        tags:[]
+
     });
     
     const [selectedTags,setSelectedTags] = React.useState([]);
@@ -62,15 +63,13 @@ const NewAdvertForm = ({tagsAPI}) => {
     }
   
     const handleSubmit = ev =>{
-
         setError(null);
         ev.preventDefault();
         if(validationForm()){
-
-           
-
+            setSelectedTags(
+                contentNewAdvert.tags = {...selectedTags}
+            )
         }
-        
        
     }
 
