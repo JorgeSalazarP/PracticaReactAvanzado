@@ -6,6 +6,8 @@ import AppRouter from './routes/AppRouter';
 const App = ({isInitiallyLogged})=> {
 
   return (
+
+    
     <AuthContextProvider isInitiallyLogged={isInitiallyLogged}>
       <LoadingContextProvider>
         <AppRouter/>

@@ -12,7 +12,7 @@ const AdvertDetailPage = ({ history }) => {
     const [advertDetail, setAdvertDetail] = React.useState([]);
    
     React.useEffect(()=>{
-        async function getAdvertById(){
+        const getAdvertById = async ()=>{
             try {
                 setIsLoading(true);
                 setAdvertDetail(await getAdvertDetail(id));
@@ -25,15 +25,20 @@ const AdvertDetailPage = ({ history }) => {
 
         getAdvertById();
         
-    },[]);
+    },[setIsLoading,history,id]);
 
     
     const onClickDeleteAdvert = async ()=>{
         const deleteConfirmed = window.confirm('Are you sure to delete this advert?');
         if (deleteConfirmed) {
-           await deleteAdvert(id);
-           history.push('/');
+            try {
+                await deleteAdvert(id);
+                history.push('/');
+            } catch (error) {
+                history.replace('/404');
+            }
         }
+        
     }
 
   

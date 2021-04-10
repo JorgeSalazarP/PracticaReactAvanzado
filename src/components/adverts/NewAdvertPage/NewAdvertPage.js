@@ -1,11 +1,40 @@
 import React from 'react';
+import { LoadingContext } from '../../../context/LoadingContext';
+import { getAdvertsTags } from '../../../api/adverts';
+import NewAdvertForm from './NewAdvertForm';
+import Spinner from '../../shared/Spinner';
+import './NewAdvertPage.css';
 
-const NewAdvertPage = () => {
+const NewAdvertPage = ({history}) => {
+    
+    const [tagsAPI,setTagsAPI] = React.useState([]);
+    const {isLoading,setIsLoading} = React.useContext(LoadingContext);
+    
+    
+    React.useEffect(() => {
+        
+        const getTags = async ()=>{
+            try {
+                setIsLoading(true);
+                setTagsAPI(await getAdvertsTags());
+              
+            } catch (error) {
+                history.replace('/404');
+            }finally{
+                setIsLoading(false);
+            }
+        }
+
+        getTags();
+        
+    }, [setIsLoading,history]);
     return (
-        <div>
-         <h1>NEW</h1>
-         
-        </div>
-    )
+
+        <main className="container">
+            <h1>NEW ADVERT</h1>    
+            { isLoading && <Spinner/>}
+            {(tagsAPI.length > 0) && <NewAdvertForm tagsAPI={tagsAPI}/>}
+        </main>
+    );
 }
 export default NewAdvertPage;
