@@ -1,14 +1,15 @@
 import React from 'react';
 import Error from '../../error/Error';
 
-const NewAdvertForm = ({tagsAPI}) => {
+const NewAdvertForm = ({tagsAPI, saveNewAdvert}) => {
+
 
     const [contentNewAdvert,setContentNewAdvert] = React.useState({
         name:'',
-        price:0,
-        sale:'Buy',
-        photo:null,
-        tags:[]
+        price: 0,
+        sale: 'Buy',
+        photo: null,
+        tags: []
         
     });
     
@@ -39,6 +40,7 @@ const NewAdvertForm = ({tagsAPI}) => {
         }));
     
     }
+  
 
     const optionsCheckbox = () =>{
         const optionTagsSelected = Object.values(selectedTags);
@@ -66,14 +68,30 @@ const NewAdvertForm = ({tagsAPI}) => {
 
 
     }
-  
+    
     const handleSubmit = ev =>{
-        setError(null);
+        
         ev.preventDefault();
+        setError(null);
         if(validationForm()){
-            setSelectedTags(contentNewAdvert.tags = {...selectedTags})
-
+            let isBuy = true
+            if(sale ==='Sell'){
+                isBuy=false;
+            }else{
+                isBuy = true;
+            }
+            console.log(isBuy)
+            setContentNewAdvert(oldContentNewAdvert => ({
+                ...oldContentNewAdvert,
+                tags: {...selectedTags},
+                sale: isBuy
+                
+               
+            }));
+            
         }
+
+        
        
     }
 
@@ -107,17 +125,16 @@ const NewAdvertForm = ({tagsAPI}) => {
                 className="form-control" 
                 id="buy_sell"
                 name="sale"
-                value={sale}
                 onChange={handleChange}
             >
                 
-                <option>Buy</option>
+                <option selected>Buy</option>
                 <option>Sell</option>
             </select>
             <div className="form-check form-check-inline">
-                {tagsAPI.map((tag,index)=>(
+                {tagsAPI.map(tag=>(
                        
-                    <React.Fragment key={index}>
+                    <React.Fragment key={tag}>
                         <label>{tag}</label>
                         <input 
                             className="form-check-input" 

@@ -17,6 +17,10 @@ export const getAdvertsTags = () => {
   return client.get(url);
 };
 
+// export const createAdvert = tweetId => {
+//   const url = `${tweetsBaseUrl}/tweets/${tweetId}/likes`;
+//   return client.post(url);
+// };
 
 export const deleteAdvert = id => {
   const url = `${BASE_URL}/v1/adverts/${id}`;

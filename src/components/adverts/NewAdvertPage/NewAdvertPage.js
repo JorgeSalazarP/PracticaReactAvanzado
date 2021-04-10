@@ -28,12 +28,22 @@ const NewAdvertPage = ({history}) => {
         getTags();
         
     }, [setIsLoading,history]);
+
+    const saveNewAdvert = newAdvert =>{
+
+        
+    }
+
     return (
 
         <main className="container">
             <h1>NEW ADVERT</h1>    
             { isLoading && <Spinner/>}
-            {(tagsAPI.length > 0) && <NewAdvertForm tagsAPI={tagsAPI}/>}
+            {(tagsAPI.length > 0) 
+                && <NewAdvertForm 
+                tagsAPI={tagsAPI}
+                saveNewAdvert={saveNewAdvert}
+            />}
         </main>
     );
 }
