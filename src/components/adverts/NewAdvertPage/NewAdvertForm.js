@@ -7,27 +7,31 @@ const NewAdvertForm = ({tagsAPI}) => {
         name:'',
         price:0,
         sale:'Buy',
-        photo:'', 
+        photo:null,
         tags:[]
-
+        
     });
     
     const [selectedTags,setSelectedTags] = React.useState([]);
     const [error,setError] = React.useState(null);
-    const {name,price,sale,photo} = contentNewAdvert;
+    const {name,price,sale} = contentNewAdvert;
 
     const handleChange = ev =>{
-
         setContentNewAdvert(oldContentNewAdvert => ({
             ...oldContentNewAdvert,
             [ev.target.name]: ev.target.value,
           }));
 
     }
+    const handleFile = ev =>{
+        setContentNewAdvert(oldContentNewAdvert => ({
+            ...oldContentNewAdvert,
+            photo: ev.target.files[0].name,
+           
+        }));
+    }
     
     const handleChangeChecked = ev =>{
-
-        
         setSelectedTags(oldSelectedTags => ({
             ...oldSelectedTags,
             [ev.target.value]: ev.target.checked,
@@ -35,6 +39,7 @@ const NewAdvertForm = ({tagsAPI}) => {
         }));
     
     }
+
     const optionsCheckbox = () =>{
         const optionTagsSelected = Object.values(selectedTags);
         return optionTagsSelected.find(isSelected=>isSelected===true);
@@ -66,9 +71,8 @@ const NewAdvertForm = ({tagsAPI}) => {
         setError(null);
         ev.preventDefault();
         if(validationForm()){
-            setSelectedTags(
-                contentNewAdvert.tags = {...selectedTags}
-            )
+            setSelectedTags(contentNewAdvert.tags = {...selectedTags})
+
         }
        
     }
@@ -124,17 +128,28 @@ const NewAdvertForm = ({tagsAPI}) => {
                         />
                     </React.Fragment>
                 ))}
+            </div> 
+                       
+            <div className="form_field">
+                               
+                <label htmlFor="file">Upload image</label>
+                <input 
+                    type="file"  
+                    accept="image/*"
+                    name="photo"
+                    onChange={handleFile}
+                />    
+                 
             </div>
+                
             <div className="form_field">
                 <input 
                     type="submit" 
                     className="btn btn-primary btn-lg btn-block" 
-                    value="Publish" 
-                    disabled = {!selectedTags}
-                  
-                   
+                    value="Publish"     
                 />
             </div>
+
 
             {error ? <Error message={error}/>: null}
     
