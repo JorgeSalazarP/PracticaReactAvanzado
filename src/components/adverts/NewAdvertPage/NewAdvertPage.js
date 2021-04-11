@@ -1,6 +1,6 @@
 import React from 'react';
 import { LoadingContext } from '../../../context/LoadingContext';
-import { getAdvertsTags } from '../../../api/adverts';
+import { getAdvertsTags,createNewAdvert } from '../../../api/adverts';
 import NewAdvertForm from './NewAdvertForm';
 import Spinner from '../../shared/Spinner';
 import './NewAdvertPage.css';
@@ -29,16 +29,32 @@ const NewAdvertPage = ({history}) => {
         
     }, [setIsLoading,history]);
 
-    const saveNewAdvert = newAdvert =>{
+    const saveNewAdvert = async newAdvert =>{
+       
+       
+       
+        try {
+            setIsLoading(true);
+            
+            let data = new FormData();
+            data.append('name',newAdvert.name);
+            data.append('price',newAdvert.price);
+            data.append('sale',newAdvert.sale);
+            data.append('tags',newAdvert.tags);
 
-        console.log(newAdvert);
 
-        if(newAdvert.sale==="true"){
-            newAdvert.sale=true;
-        }else{
-            newAdvert.sale=false;
+            if(newAdvert.photo.length){
+                data.append('photo', new Blob([newAdvert.photo],{type:'multipart/form-data'}));
+            }
+
+            await createNewAdvert(data);
+            history.push('/');
+          
+        } catch (error) {
+            history.replace('/404');
+        }finally{
+            setIsLoading(false);
         }
-        console.log(newAdvert);
 
     }
 

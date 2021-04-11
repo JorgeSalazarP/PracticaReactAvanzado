@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import Header from '../components/layout/Header';
 import { AdvertDetailPage, AdvertsPage, NewAdvertPage } from '../components/adverts';
+import { Footer } from '../components/layout/Footer';
 
 
 const DashboardRoutes = () => {
@@ -34,7 +35,7 @@ const DashboardRoutes = () => {
                 </Switch>
             </div>
 
-            
+            <Footer />
         </div>
 
     )

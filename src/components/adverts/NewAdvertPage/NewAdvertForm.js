@@ -10,48 +10,68 @@ const NewAdvertForm = ({tagsAPI, saveNewAdvert}) => {
         sale: true,
         photo: null,
         tags:[]
-        
     });
     
-    const [selectedTags,setSelectedTags] = React.useState([]);
+    const [tagsChecked,setTagsChecked] = React.useState([]);
     const [error,setError] = React.useState(null);
-    const {name,price,sale,tags} = contentNewAdvert;
+    const { name, price, sale} = contentNewAdvert;
 
     const handleChange = ev =>{
-        setContentNewAdvert(oldContentNewAdvert => ({
-            ...oldContentNewAdvert,
-            [ev.target.name]: ev.target.value,
-          }));
+        if(ev.target.name === 'price'){
+            setContentNewAdvert(oldContentNewAdvert => ({
+                ...oldContentNewAdvert,
+                [ev.target.name]:parseInt(ev.target.value)
+            }));
+        }else{
+            setContentNewAdvert(oldContentNewAdvert => ({
+                ...oldContentNewAdvert,
+                [ev.target.name]:ev.target.value,
+            }));
+        }
+
+    }
+
+    const handleChangeSale = ev =>{
+        if(ev.target.value === 'true'){
+            setContentNewAdvert(oldContentNewAdvert => ({
+                ...oldContentNewAdvert,
+               sale:true,
+            }));
+        }else{
+            
+            setContentNewAdvert(oldContentNewAdvert => ({
+                ...oldContentNewAdvert,
+                sale:false,
+            }));
+        }
 
     }
     const handleFile = ev =>{
         setContentNewAdvert(oldContentNewAdvert => ({
             ...oldContentNewAdvert,
-            photo: ev.target.files[0].name,
+            photo: ev.target.files[0],
            
         }));
     }
     
     const handleChangeChecked = ev =>{
-        setSelectedTags(oldSelectedTags => ({
-            ...oldSelectedTags,
-            [ev.target.value]: ev.target.checked,
-    
-        }));
-    
+        if(ev.target.checked){
+            setTagsChecked((oldTagsChecked)=>[
+                ...oldTagsChecked,
+                ev.target.value
+        ]);
+
+        }else{
+            setTagsChecked((oldTagsChecked)=>
+                oldTagsChecked.filter((tag)=>tag !==ev.target.value)
+            );
+        }
+       
     }
   
-
-    const optionsCheckbox = () =>{
-        const optionTagsSelected = Object.values(selectedTags);
-        return optionTagsSelected.find(isSelected=>isSelected===true);
-      
-    }
-    
     const validationForm = () =>{
 
-        
-        if(!optionsCheckbox() ){
+        if(tagsChecked.length===0){
             setError('Tags *Obligatory field');
             return false;
         }
@@ -74,8 +94,7 @@ const NewAdvertForm = ({tagsAPI, saveNewAdvert}) => {
         setError(null);
         ev.preventDefault();
         if(validationForm()){
-            
-            setSelectedTags(contentNewAdvert.tags={...selectedTags});
+            contentNewAdvert.tags = [...tagsChecked];
             saveNewAdvert(contentNewAdvert);
 
           
@@ -112,11 +131,11 @@ const NewAdvertForm = ({tagsAPI, saveNewAdvert}) => {
                 className="form-control" 
                 id="buy_sell"
                 name="sale"
-                onChange={handleChange}
+                onChange={handleChangeSale}
             >
 
-                <option value={sale===sale}>Buy</option>
-                <option value={sale!==sale}>Sell</option>
+                <option value={true}>Buy</option>
+                <option value={false}>Sell</option>
             </select>
             <div className="form-check form-check-inline">
                 {tagsAPI.map(tag=>(
@@ -127,6 +146,7 @@ const NewAdvertForm = ({tagsAPI, saveNewAdvert}) => {
                             className="form-check-input" 
                             type="checkbox"
                             value={tag}
+                            name="tag"
                             onChange={handleChangeChecked}
                             
                         />

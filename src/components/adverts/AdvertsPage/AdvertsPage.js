@@ -15,7 +15,7 @@ const AdvertsPage = () => {
     
     return (
         
-      <React.Fragment>
+      <React.Fragment >
             {adverts.length ? <AdvertsList adverts={adverts} /> : <EmptyList />}
       </React.Fragment>
         
