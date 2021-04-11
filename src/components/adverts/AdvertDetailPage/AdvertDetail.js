@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 const AdvertDetail = ({name,price,photo,sale,tags,onClickDeleteAdvert}) => {
     
     const history = useHistory();
-    
+        
     return (
 
             <div className="row mt-5">
@@ -22,7 +22,6 @@ const AdvertDetail = ({name,price,photo,sale,tags,onClickDeleteAdvert}) => {
                         <li className="list-group-item">  { price }€  </li>
                         <li className="list-group-item"> <b> </b> { sale ? 'Buy':'Sell' } </li>
                         <li className="list-group-item"> <b> Tag: </b> { tags } </li> 
-
                        
                     </ul>
                     <button 
@@ -33,7 +32,7 @@ const AdvertDetail = ({name,price,photo,sale,tags,onClickDeleteAdvert}) => {
                     </button>
                     <button 
                         className="btn btn-outline-info" 
-                        style={ {backgroundColor: 'red'}}
+                        style={ {backgroundColor: 'red', marginLeft: 20}}
                         onClick={ onClickDeleteAdvert }
                     >
                         Delete
