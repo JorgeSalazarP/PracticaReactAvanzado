@@ -3,7 +3,7 @@ import { LoadingContext } from '../../../context/LoadingContext';
 import { getAdvertsTags,createNewAdvert } from '../../../api/adverts';
 import NewAdvertForm from './NewAdvertForm';
 import Spinner from '../../shared/Spinner';
-import './NewAdvertPage.css';
+
 
 const NewAdvertPage = ({history}) => {
     
@@ -30,23 +30,19 @@ const NewAdvertPage = ({history}) => {
     }, [setIsLoading,history]);
 
     const saveNewAdvert = async newAdvert =>{
-       
-       
-       
+        
         try {
+
             setIsLoading(true);
-            
-            let data = new FormData();
+
+            const data = new FormData();
             data.append('name',newAdvert.name);
             data.append('price',newAdvert.price);
             data.append('sale',newAdvert.sale);
             data.append('tags',newAdvert.tags);
-
-
-            if(newAdvert.photo.length){
-                data.append('photo', new Blob([newAdvert.photo],{type:'multipart/form-data'}));
+            if(newAdvert.photo){
+                data.append('photo',newAdvert.photo);
             }
-
             await createNewAdvert(data);
             history.push('/');
           

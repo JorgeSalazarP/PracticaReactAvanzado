@@ -20,7 +20,7 @@ const AdvertDetail = ({name,price,photo,sale,tags,onClickDeleteAdvert}) => {
                     <h3> { name } </h3>
                     <ul className="list-group list-group-flush">
                         <li className="list-group-item">  { price }€  </li>
-                        <li className="list-group-item"> <b> Buy or Sell: </b> { sale } </li>
+                        <li className="list-group-item"> <b> </b> { sale ? 'Buy':'Sell' } </li>
                         <li className="list-group-item"> <b> Tag: </b> { tags } </li>
                     </ul>
                     <button 

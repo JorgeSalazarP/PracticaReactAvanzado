@@ -17,12 +17,19 @@ export const getAdvertsTags = () => {
   return client.get(url);
 };
 
-export const createNewAdvert = createAdvert => {
-  const url = `${BASE_URL}/v1/adverts/`;
-  return client.post(url,createAdvert);
+export const createNewAdvert = newAdvert => {
+  const url = `${BASE_URL}/v1/adverts`;
   
+  const config = {
+    headers:{
+      'content-type':'multipart/form-data'
+    }
+  }
+  
+  return client.post(url,newAdvert,config);
   
 }
+
 
 export const deleteAdvert = id => {
   const url = `${BASE_URL}/v1/adverts/${id}`;

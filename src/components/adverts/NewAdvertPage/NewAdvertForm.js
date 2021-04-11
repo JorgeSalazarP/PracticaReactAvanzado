@@ -14,7 +14,7 @@ const NewAdvertForm = ({tagsAPI, saveNewAdvert}) => {
     
     const [tagsChecked,setTagsChecked] = React.useState([]);
     const [error,setError] = React.useState(null);
-    const { name, price, sale} = contentNewAdvert;
+    const { name, price } = contentNewAdvert;
 
     const handleChange = ev =>{
         if(ev.target.name === 'price'){
