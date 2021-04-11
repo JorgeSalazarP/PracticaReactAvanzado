@@ -13,12 +13,15 @@ export const Header = () => {
     const { setIsLogged } = React.useContext(AuthContext);
     
     
-    
     const handleClick = () =>{
-        logout();
-        setIsLogged(false);
-    
-        history.replace('/login');
+        const deleteConfirmed = window.confirm('Are you sure?');
+        if (deleteConfirmed) {
+            logout();
+            setIsLogged(false);
+            history.replace('/login');
+            
+        }
+
 
     }
 
@@ -27,11 +30,14 @@ export const Header = () => {
             
 
             <div className="navbar-collapse">
-                <div className="navbar-nav">
+                <div className="navbar-nav "  
+                    style={{fontSize: 20, padding: 5}}
+                >
 
                     <NavLink 
                         activeClassName="active"
-                        className="nav-item nav-link" 
+                        className="nav-item nav-link "
+                        
                         exact
                         to='/'
                     >
@@ -43,8 +49,9 @@ export const Header = () => {
                         className="nav-item nav-link" 
                         exact
                         to='/advert/new'
+                       
                     >
-                        New Adverts
+                        New
                     
                     </NavLink>
                 </div>

@@ -13,27 +13,10 @@ const AdvertsPage = ({history}) => {
           history.replace('/404')}
         );
        
-    },[]);
+    },[history]);
 
 
-  //   React.useEffect(() => {
-        
-  //     const getAds = async ()=>{
-  //         try {
-  //             setIsLoading(true);
-  //             setAdverts(await getAdverts());
-            
-  //         } catch (error) {
-  //             history.replace('/404');
-  //         }finally{
-  //             setIsLoading(false);
-  //         }
-  //     }
-
-  //     getAds();
-      
-  // }, [setIsLoading,history]);
-    
+  
     return (
         
       <React.Fragment >
