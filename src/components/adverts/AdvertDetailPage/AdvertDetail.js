@@ -21,7 +21,9 @@ const AdvertDetail = ({name,price,photo,sale,tags,onClickDeleteAdvert}) => {
                     <ul className="list-group list-group-flush">
                         <li className="list-group-item">  { price }€  </li>
                         <li className="list-group-item"> <b> </b> { sale ? 'Buy':'Sell' } </li>
-                        <li className="list-group-item"> <b> Tag: </b> { tags } </li>
+                        <li className="list-group-item"> <b> Tag: </b> { tags } </li> 
+
+                       
                     </ul>
                     <button 
                         className="btn btn-outline-info"
@@ -30,7 +32,8 @@ const AdvertDetail = ({name,price,photo,sale,tags,onClickDeleteAdvert}) => {
                         Return
                     </button>
                     <button 
-                        className="btn btn-outline-info"
+                        className="btn btn-outline-info" 
+                        style={ {backgroundColor: 'red'}}
                         onClick={ onClickDeleteAdvert }
                     >
                         Delete

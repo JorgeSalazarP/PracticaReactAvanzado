@@ -8,7 +8,7 @@ const Advert = ({id,name,sale,price,tags}) => {
             <div className="card-body">
                 <p className="card-title">{price}€</p>
                 <p className="card-text"> {sale ? 'Buy': 'Sell'} </p>
-                <p className="card-text"> {tags} </p>
+                <p className="card-text"> {tags.join(' - ')} </p>
             </div>
             <Link className="btn btn-block" to={`./advert/${id}`}>
                     More...
