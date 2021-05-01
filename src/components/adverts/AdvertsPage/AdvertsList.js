@@ -7,7 +7,7 @@ const AdvertsList = ({ adverts, ...props }) => {
     const [filteredAdverts,setFilteredAdverts] = React.useState(adverts);
 
     const clickSearch = selectedFilter =>{
-        console.log(selectedFilter.tags)
+      
         setFilteredAdverts(
 
             adverts.filter(advert=>{
@@ -19,20 +19,23 @@ const AdvertsList = ({ adverts, ...props }) => {
                   filterByTags = advert.tags.some((tag) => selectedFilter.tags.indexOf(tag) >-1);
                 }
 
-                return filterByName && filterByTags
+                //descartamos en el filtro la opción 'All'
+                let filterBySale = true; 
+                if (selectedFilter.sale === true) {
+                  filterBySale = advert.sale === true;
+                }
+                if (selectedFilter.sale === false) {
+                  filterBySale = advert.sale === false;
+                } 
+        
+                return filterByName && filterByTags && filterBySale;
             })
 
 
 
         )
         
-        
-        //console.log(filterTags)
-        // console.log(filter)
-        // filter = {...filterTags};
-        // console.log(filter)
-
-       // setFilteredAdverts(filteredAdverts);
+    
 
     }
    
