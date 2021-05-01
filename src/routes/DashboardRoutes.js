@@ -5,12 +5,14 @@ import { AdvertDetailPage, AdvertsPage, NewAdvertPage } from '../components/adve
 import { Footer } from '../components/layout/Footer';
 
 
+
 const DashboardRoutes = () => {
     
     return (
         
         <div>
-            <Header />
+            <Header/>
+           
             <div className = "container mt-5">
                 <Switch>
                     <Route exact path='/advert/new' component={NewAdvertPage}/>

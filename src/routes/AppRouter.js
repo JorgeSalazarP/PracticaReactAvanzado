@@ -15,17 +15,17 @@ const AppRouter = () => {
         <Router>
             <div>
                <Switch>
-                      <PublicRoute 
-                          exact path='/login' 
-                          component={ LoginPage }
-                          isLogged={ isLogged }
-                      />
+                        <PublicRoute 
+                            exact path='/login' 
+                            component={ LoginPage }
+                            isLogged={ isLogged }
+                        />
                    
-                    <PrivateRoute 
-                        path='/'
-                        component={ DashboardRoutes }
-                        isLogged={ isLogged }
-                    />
+                        <PrivateRoute 
+                            path='/'
+                            component={ DashboardRoutes }
+                            isLogged={ isLogged }
+                        />
                     
                </Switch>
             </div>

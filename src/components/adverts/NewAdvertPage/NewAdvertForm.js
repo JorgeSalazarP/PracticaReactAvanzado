@@ -156,6 +156,7 @@ const NewAdvertForm = ({tagsAPI, saveNewAdvert}) => {
                        
             <div className="form_field">
                                
+                               
                 <label htmlFor="file">Upload image</label>
                 <input 
                     type="file"  

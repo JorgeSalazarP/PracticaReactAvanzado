@@ -1,52 +1,87 @@
 import React from 'react';
-import queryString from 'query-string';
-import AdvertDetailPage from '../components/adverts/AdvertDetailPage'
-import AdvertsList from '../components/adverts/AdvertsPage/AdvertsList';
-import useForm from '../hooks/useForm';
-import { useLocation } from 'react-router-dom';
-import { getSearchAdverts } from './getSearchAdverts';
- 
 
 
-
-const FiltersAdverts = ({ history }) => {
+const FiltersAdverts = ({ clickSearch, tagsAPI }) => {
     
-    
-    const location = useLocation();
-    const { q = ''} = queryString.parse(location.search); //Control undefined
-    
-    const [formValues,handleChange] = useForm({
-        searchNameAdvert: q
+    const [tagsChecked,setTagsChecked] = React.useState([]);
+    const [filter, setFilter] = React.useState({
+        name:'',
+        tags:[]
     });
-    
-    const { searchNameAdvert } = formValues;
-    const filterAdverts = getSearchAdverts(searchNameAdvert);
-    
-    const handleSubmit = (ev) =>{
+
+    const { name,tags } = filter;
+
+    const handleChange = ev =>{
+
+        setFilter(oldFilter => ({
+            ...oldFilter,
+            [ev.target.name]: ev.target.value,
+          }));
+
+    }
+
+    const handleChangeChecked = ev =>{
+        if(ev.target.checked){
+            setTagsChecked((oldTagsChecked)=>[
+                ...oldTagsChecked,
+                ev.target.value
+        ]);
+
+        }else{
+            setTagsChecked((oldTagsChecked)=>
+                oldTagsChecked.filter((tag)=>tag !==ev.target.value)
+            );
+        }
+       
+    }
+
+   
+    const handleSubmit = ev =>{
         ev.preventDefault();
-        history.push(`?q=${searchNameAdvert}`);
+       // const filter = filterByName(name);
+        filter.tags = [...tagsChecked];
+        clickSearch(filter);
+
 
     }
 
     return ( 
         
         <div>
-        
-            <div className="row">
+            
+            <div className="row p-5">
                 <div className="col-5">
                     <h4> Search Form </h4>
                     <hr />
 
                     <form 
-                        onSubmit={ handleSubmit }>
+                        onSubmit={handleSubmit}
+                    >
                         <input 
                             type="text"
                             placeholder="Find your advert"
                             className="form-control"
-                            name="searchNameAdvert"
-                            value={ searchNameAdvert }
-                            onChange={ handleChange }
+                            name="name"
+                            value={name}
+                            onChange={handleChange}
                         />
+
+                    <div className="form-check form-check-inline">
+                        {tagsAPI.map(tag=>(
+                       
+                            <React.Fragment key={tag}>
+                                <label>{tag}</label>
+                                <input 
+                                    className="form-check-input" 
+                                    type="checkbox"
+                                    value={tag}
+                                    name="tag"
+                                    onChange={handleChangeChecked}
+                                    
+                                />
+                            </React.Fragment>
+                        ))}
+                    </div> 
 
                         <button
                             type="submit"
@@ -60,34 +95,7 @@ const FiltersAdverts = ({ history }) => {
                 </div>
 
 
-                <div className="col-7">
-
-                    <h4> Results </h4>
-                    <hr />
-
-                    {
-                        filterAdverts.map(advert=>(
-                            
-                            <AdvertsList
-                                key = { advert.id }
-                                { ...advert }    
-                            />
-
-                        ))
-                    }
-
-                    
-                    { 
-                        (filterAdverts.length === 0 && q!=='' ) 
-                            && 
-                            <div className="alert alert-danger">
-                                There isn't advert with { q }
-                            </div>
-                    } 
-                    
-
-                </div>
-
+                
             </div>
 
         </div>
