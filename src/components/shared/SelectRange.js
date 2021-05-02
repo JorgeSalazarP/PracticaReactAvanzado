@@ -16,6 +16,10 @@ export class SelectRange extends React.Component {
       this.props.filteredPrice(this.state.value);
     }
 
+    componentWillUnmount(){
+      setInterval(this.props.filteredPrice);
+    }
+
     render() {
       
       return (
