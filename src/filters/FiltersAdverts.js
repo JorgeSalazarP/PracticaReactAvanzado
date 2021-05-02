@@ -1,5 +1,5 @@
 import React from 'react';
-import {SelectRange} from '../components/shared/SelectRange';
+import { SelectRange } from '../components/shared/SelectRange';
 
 const FiltersAdverts = ({ clickSearch, tagsAPI, ...props }) => {
     

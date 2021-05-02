@@ -1,14 +1,13 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { getAdvertDetail, deleteAdvert } from '../../../api/adverts';
-import { LoadingContext } from '../../../context/LoadingContext';
 import Spinner from '../../shared/Spinner';
 import AdvertDetail from './AdvertDetail';
 
 const AdvertDetailPage = ({ history }) => {
     
     const { id } = useParams();
-    const {isLoading,setIsLoading} = React.useContext(LoadingContext);
+    const [isLoading,setIsLoading] = React.useState(false);
     const [advertDetail, setAdvertDetail] = React.useState([]);
    
     React.useEffect(()=>{

@@ -1,5 +1,4 @@
 import React from 'react';
-import { LoadingContext } from '../../../context/LoadingContext';
 import { getAdvertsTags,createNewAdvert } from '../../../api/adverts';
 import NewAdvertForm from './NewAdvertForm';
 import Spinner from '../../shared/Spinner';
@@ -8,7 +7,7 @@ import Spinner from '../../shared/Spinner';
 const NewAdvertPage = ({history}) => {
     
     const [tagsAPI,setTagsAPI] = React.useState([]);
-    const {isLoading,setIsLoading} = React.useContext(LoadingContext);
+    const [isLoading,setIsLoading] = React.useState(false);
     
     
     React.useEffect(() => {

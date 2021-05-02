@@ -3,7 +3,6 @@ import { login } from '../../../api/auth';
 import Error from '../../error/Error';
 import Spinner from '../../shared/Spinner';
 import { AuthContext } from '../../../context/AuthContext';
-import { LoadingContext } from '../../../context/LoadingContext';
 import LoginForm from './LoginForm';
 import './LoginPage.css';
 
@@ -12,7 +11,7 @@ import './LoginPage.css';
 const LoginPage = () => {
 
     const { setIsLogged } = React.useContext(AuthContext);
-    const { isLoading, setIsLoading } = React.useContext(LoadingContext);
+    const [isLoading,setIsLoading] = React.useState(false);
     const [error,setError] = React.useState(null);
     const [isChecked, setIsChecked] = React.useState(false);
 
