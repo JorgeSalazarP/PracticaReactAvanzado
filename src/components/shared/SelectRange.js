@@ -8,15 +8,15 @@ export class SelectRange extends React.Component {
    
       this.state = {
         value: { min: 0, max: 25000 },
-      };
-      
+      }; 
       
     }
     componentDidUpdate(){
       this.props.filteredPrice(this.state.value);
     }
-    
+
     render() {
+      
       return (
         <InputRange
           maxValue={25000}

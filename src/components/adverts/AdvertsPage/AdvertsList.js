@@ -5,7 +5,10 @@ import FiltersAdverts from '../../../filters/FiltersAdverts';
 const AdvertsList = ({ adverts, ...props }) => {
 
     const [filteredAdverts,setFilteredAdverts] = React.useState(adverts);
-    const [priceRange,setPriceRange] = React.useState({})
+    const [priceRange,setPriceRange] = React.useState({
+        min:0,
+        max:25000
+    })
     
     const filteredPrice = selectedRange =>{
         setPriceRange(selectedRange);
@@ -33,10 +36,13 @@ const AdvertsList = ({ adverts, ...props }) => {
                   filterBySale = advert.sale === false;
                 } 
 
-              
-                        
+                let filterPrice = 0;
+                
+                if(advert.price >= priceRange.min && advert.sale <= priceRange.max){
+                    filterPrice = advert.price;
+                }
         
-                return filterByName && filterByTags && filterBySale;
+                return filterByName && filterByTags && filterBySale && filterPrice;
             })
 
 
