@@ -97,7 +97,6 @@ const NewAdvertForm = ({tagsAPI, saveNewAdvert}) => {
             contentNewAdvert.tags = [...tagsChecked];
             saveNewAdvert(contentNewAdvert);
 
-          
         }
     }
 

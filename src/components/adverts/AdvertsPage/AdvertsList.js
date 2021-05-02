@@ -5,9 +5,14 @@ import FiltersAdverts from '../../../filters/FiltersAdverts';
 const AdvertsList = ({ adverts, ...props }) => {
 
     const [filteredAdverts,setFilteredAdverts] = React.useState(adverts);
+    const [priceRange,setPriceRange] = React.useState({})
+    
+    const filteredPrice = selectedRange =>{
+        setPriceRange(selectedRange);
+    }
 
     const clickSearch = selectedFilter =>{
-      
+       
         setFilteredAdverts(
 
             adverts.filter(advert=>{
@@ -27,6 +32,9 @@ const AdvertsList = ({ adverts, ...props }) => {
                 if (selectedFilter.sale === false) {
                   filterBySale = advert.sale === false;
                 } 
+
+              
+                        
         
                 return filterByName && filterByTags && filterBySale;
             })
@@ -44,8 +52,8 @@ const AdvertsList = ({ adverts, ...props }) => {
         <React.Fragment>
             <FiltersAdverts 
                 clickSearch={clickSearch}
+                filteredPrice={filteredPrice}
                 {...props}
-
             />
             <div className="card-columns">
                 {filteredAdverts.map(advert=>(

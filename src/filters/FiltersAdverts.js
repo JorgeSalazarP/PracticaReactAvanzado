@@ -1,16 +1,16 @@
 import React from 'react';
+import {SelectRange} from '../components/shared/SelectRange';
 
-
-const FiltersAdverts = ({ clickSearch, tagsAPI }) => {
+const FiltersAdverts = ({ clickSearch, tagsAPI, ...props }) => {
     
     const [tagsChecked,setTagsChecked] = React.useState([]);
     const [filter, setFilter] = React.useState({
         name:'',
         sale:'All',
-        tags:[]
+        tags:[],
     });
 
-    const { name,sale } = filter;
+    const { name } = filter;
 
     const handleChange = ev =>{
         
@@ -35,7 +35,7 @@ const FiltersAdverts = ({ clickSearch, tagsAPI }) => {
 
         }else{
             setTagsChecked((oldTagsChecked)=>
-                oldTagsChecked.filter((tag)=>tag !==ev.target.value)
+                oldTagsChecked.filter((tag)=>tag !== ev.target.value)
             );
         }
        
@@ -119,10 +119,14 @@ const FiltersAdverts = ({ clickSearch, tagsAPI }) => {
                         
                         
                         </div> 
+                        
+                        <SelectRange
+                            {...props}
+                        />
 
                         <button
                             type="submit"
-                            className="btn m-1 btn-block btn-outline-primary"
+                            className="btn mt-5 btn-block btn-outline-primary"
                         >
                             Search
                         </button>
