@@ -1,4 +1,5 @@
 import React from 'react';
+import T from 'prop-types';
 import Advert from './Advert';
 import FiltersAdverts from '../../../filters/FiltersAdverts';
 
@@ -68,10 +69,14 @@ const AdvertsList = ({ adverts, ...props }) => {
                         key={advert.id}
                         {...advert}
                     />
-                    ))} 
+                ))} 
             </div>
         </React.Fragment>
     );
 }
- 
+
+AdvertsList.propTypes = {
+    adverts:T.array.isRequired
+};
+
 export default AdvertsList;

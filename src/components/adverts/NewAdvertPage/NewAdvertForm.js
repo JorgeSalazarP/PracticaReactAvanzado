@@ -1,7 +1,8 @@
 import React from 'react';
+import T from 'prop-types';
 import Error from '../../error/Error';
 
-const NewAdvertForm = ({tagsAPI, saveNewAdvert}) => {
+const NewAdvertForm = ({ tagsAPI, saveNewAdvert }) => {
 
 
     const [contentNewAdvert,setContentNewAdvert] = React.useState({
@@ -28,7 +29,6 @@ const NewAdvertForm = ({tagsAPI, saveNewAdvert}) => {
     }
 
     const handleChangeSale = ev =>{
-
         let value = false;
         if(ev.target.value === 'true'){
             value = true;
@@ -90,7 +90,6 @@ const NewAdvertForm = ({tagsAPI, saveNewAdvert}) => {
         if(validationForm()){
             contentNewAdvert.tags = [...tagsChecked];
             saveNewAdvert(contentNewAdvert);
-
         }
     }
 
@@ -177,5 +176,11 @@ const NewAdvertForm = ({tagsAPI, saveNewAdvert}) => {
         
      );
 }
+
+NewAdvertForm.propTypes = {
+    tagsAPI: T.array,
+    saveNewAdvert: T.func.isRequired,
+
+};
  
 export default NewAdvertForm;

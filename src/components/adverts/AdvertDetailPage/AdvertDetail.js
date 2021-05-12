@@ -1,7 +1,8 @@
 import React from 'react';
+import T from 'prop-types';
 import { useHistory } from 'react-router-dom';
 
-const AdvertDetail = ({name,price,photo,sale,tags,onClickDeleteAdvert}) => {
+const AdvertDetail = ({ name,price,photo,sale,tags,onClickDeleteAdvert }) => {
     
     const history = useHistory();
         
@@ -43,5 +44,19 @@ const AdvertDetail = ({name,price,photo,sale,tags,onClickDeleteAdvert}) => {
             </div>
     );
 }
- 
+
+AdvertDetail.propTypes = {
+    photo: T.string,
+    name:T.string,
+    price:T.number,
+    sale:T.bool,
+    tags:T.array,
+    onClickDeleteAdvert: T.func.isRequired,
+};
+  
+AdvertDetail.defaultProps = {
+    photo: null,
+};
+
+
 export default AdvertDetail;

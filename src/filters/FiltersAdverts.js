@@ -1,4 +1,5 @@
 import React from 'react';
+import T from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import { SelectRange } from '../components/shared/SelectRange';
 
@@ -89,7 +90,6 @@ const FiltersAdverts = ({ clickSearch, tagsAPI, ...props }) => {
                                         value={tag}
                                         name="tag"                    
                                         onChange={handleChangeChecked}
-                                        
                                     />
                                 </React.Fragment>
                             ))}
@@ -159,5 +159,10 @@ const FiltersAdverts = ({ clickSearch, tagsAPI, ...props }) => {
 
     );
 }
- 
+
+FiltersAdverts.propTypes = {
+    clickSearch: T.func.isRequired,
+    tagsAPI: T.array
+
+};
 export default FiltersAdverts;

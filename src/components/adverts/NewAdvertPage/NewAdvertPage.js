@@ -4,7 +4,7 @@ import NewAdvertForm from './NewAdvertForm';
 import Spinner from '../../shared/Spinner';
 
 
-const NewAdvertPage = ({history}) => {
+const NewAdvertPage = ({ history }) => {
     
     const [tagsAPI,setTagsAPI] = React.useState([]);
     const [isLoading,setIsLoading] = React.useState(false);

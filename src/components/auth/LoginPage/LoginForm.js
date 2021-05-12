@@ -1,4 +1,5 @@
 import React from 'react';
+import T from 'prop-types';
 
 
 const LoginForm = ({ onSubmit, setIsChecked }) => {
@@ -77,5 +78,10 @@ const LoginForm = ({ onSubmit, setIsChecked }) => {
 
     );
 }
- 
+
+LoginForm.propTypes = {
+    setIsChecked: T.func.isRequired,
+    onSubmit: T.func.isRequired,
+
+};
 export default LoginForm;

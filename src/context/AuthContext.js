@@ -1,4 +1,5 @@
 import React from 'react';
+import T from 'prop-types';
 
 export const AuthContext = React.createContext();
 const AuthContextProvider = ({isInitiallyLogged,...props}) => {
@@ -12,6 +13,15 @@ const AuthContextProvider = ({isInitiallyLogged,...props}) => {
         </AuthContext.Provider>
       );
 }
+
+AuthContextProvider.propTypes = {
+    children: T.node,
+    isInitiallyLogged:T.bool
+};
+  
+AuthContextProvider.defaultProps = {
+    children: null,
+};
  
 export default AuthContextProvider;
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import T from 'prop-types';
 import { Link } from 'react-router-dom';
 
 const Advert = ({id,name,sale,price,tags}) => {
@@ -16,5 +17,12 @@ const Advert = ({id,name,sale,price,tags}) => {
         </div>
     );
 }
+
+Advert.propTypes = {
+    name:T.string,
+    price:T.number,
+    sale:T.bool,
+    tags:T.array
+};
  
 export default Advert;

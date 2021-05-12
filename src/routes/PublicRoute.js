@@ -19,7 +19,8 @@ const PublicRoute = ({
           : ( <Redirect to='/' /> )
       )}
 
-  />);
+    />
+  );
 };
 
 export default PublicRoute;
