@@ -17,33 +17,27 @@ const NewAdvertForm = ({tagsAPI, saveNewAdvert}) => {
     const { name, price } = contentNewAdvert;
 
     const handleChange = ev =>{
-        if(ev.target.name === 'price'){
-            setContentNewAdvert(oldContentNewAdvert => ({
-                ...oldContentNewAdvert,
-                [ev.target.name]:parseInt(ev.target.value)
-            }));
-        }else{
-            setContentNewAdvert(oldContentNewAdvert => ({
-                ...oldContentNewAdvert,
-                [ev.target.name]:ev.target.value,
-            }));
+        let value = ev.target.value;
+        if(value === 'price'){
+            value = parseInt(value);
         }
-
+        setContentNewAdvert(oldContentNewAdvert => ({
+            ...oldContentNewAdvert,
+            [ev.target.name]:value,
+        }));
     }
 
     const handleChangeSale = ev =>{
+
+        let value = false;
         if(ev.target.value === 'true'){
-            setContentNewAdvert(oldContentNewAdvert => ({
-                ...oldContentNewAdvert,
-               sale:true,
-            }));
-        }else{
-            
-            setContentNewAdvert(oldContentNewAdvert => ({
-                ...oldContentNewAdvert,
-                sale:false,
-            }));
-        }
+            value = true;
+        }       
+        setContentNewAdvert(oldContentNewAdvert => ({
+            ...oldContentNewAdvert,
+            sale:value,
+        }));
+        
 
     }
     const handleFile = ev =>{

@@ -17,10 +17,10 @@ const LoginPage = () => {
 
    
     const handleSubmit = async (credentials) =>{
-        
+    
         try {
-            setIsLoading(true);
             setError(null);
+            setIsLoading(true);
             await login(credentials,isChecked);
             setIsLogged(true);
            
@@ -34,7 +34,6 @@ const LoginPage = () => {
 
     }
     
-
 
     return (
         

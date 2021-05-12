@@ -9,16 +9,19 @@ const AdvertsPage = ({history}) => {
     const [tagsAPI,setTagsAPI] = React.useState([]);
 
     React.useEffect(()=>{
-        
-        getAdverts().then(setAdverts).catch((error)=>{
-          history.replace('/404')}
+      
+      getAdverts().then(setAdverts).catch((error)=>{
+        history.replace('/404')}
         );
-        getAdvertsTags().then(setTagsAPI).catch((error)=>{
+      getAdvertsTags().then(setTagsAPI).catch((error)=>{
           history.replace('/404')}
-        );
-
+      );
+          
+       
       
     },[history]);
+    
+   
     
     
     return (

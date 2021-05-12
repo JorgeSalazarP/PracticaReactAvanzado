@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { SelectRange } from '../components/shared/SelectRange';
 
 const FiltersAdverts = ({ clickSearch, tagsAPI, ...props }) => {
@@ -9,7 +10,8 @@ const FiltersAdverts = ({ clickSearch, tagsAPI, ...props }) => {
         sale:'All',
         tags:[],
     });
-
+    
+    const history = useHistory();
     const { name } = filter;
 
     const handleChange = ev =>{
@@ -41,14 +43,18 @@ const FiltersAdverts = ({ clickSearch, tagsAPI, ...props }) => {
        
     }
 
-   
+    const handleResetClick = ev =>{
+        ev.preventDefault();
+        history.replace('/');
+
+    }
+
     const handleSubmit = ev =>{
         ev.preventDefault();
         filter.tags = [...tagsChecked];
         clickSearch(filter);
-
-
     }
+    
 
     return ( 
         
@@ -81,7 +87,7 @@ const FiltersAdverts = ({ clickSearch, tagsAPI, ...props }) => {
                                         className="form-check-input" 
                                         type="checkbox"
                                         value={tag}
-                                        name="tag"
+                                        name="tag"                    
                                         onChange={handleChangeChecked}
                                         
                                     />
@@ -94,7 +100,7 @@ const FiltersAdverts = ({ clickSearch, tagsAPI, ...props }) => {
                             <input 
                                 type="radio"
                                 name="sale"
-                                value="All"
+                                value="All"                               
                                 onChange={handleChange}
 
                             />
@@ -103,6 +109,7 @@ const FiltersAdverts = ({ clickSearch, tagsAPI, ...props }) => {
                                 type="radio"
                                 name="sale"
                                 value={true}
+                                checked={false}
                                 onChange={handleChange}
                                 
                                 
@@ -112,6 +119,7 @@ const FiltersAdverts = ({ clickSearch, tagsAPI, ...props }) => {
                                 type="radio"
                                 name="sale"
                                 value={false}
+                                checked={false}
                                 onChange={handleChange}
                                
                             />
@@ -129,6 +137,13 @@ const FiltersAdverts = ({ clickSearch, tagsAPI, ...props }) => {
                             className="btn mt-5 btn-block btn-outline-primary"
                         >
                             Search
+                        </button>
+
+                        <button
+                            onClick={handleResetClick}
+                            className="btn mt-5 btn-block btn-outline-primary"
+                        >
+                            Reset
                         </button>
                     </form>
 
