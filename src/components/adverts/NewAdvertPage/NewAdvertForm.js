@@ -98,6 +98,7 @@ const NewAdvertForm = ({ tagsAPI, saveNewAdvert }) => {
         
         <form
             onSubmit={handleSubmit}
+            style={{ height:680 }}
         >
 
             <label htmlFor="input_name">Name</label>
@@ -115,6 +116,7 @@ const NewAdvertForm = ({ tagsAPI, saveNewAdvert }) => {
                 className="form-control" 
                 id="input_price"
                 name="price"
+                style={{ fontSize:15 }}
                 value={price}
                 onChange={handleChange}
             />
@@ -124,6 +126,7 @@ const NewAdvertForm = ({ tagsAPI, saveNewAdvert }) => {
                 id="buy_sell"
                 name="sale"
                 onChange={handleChangeSale}
+                style={{ fontSize:15 }}
             >
 
                 <option value={true}>Buy</option>

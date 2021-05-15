@@ -22,7 +22,7 @@ h1 {
 .btn {
   margin-top: 2rem;
   padding: 1.5rem;
-  font-size: 1.4rem;
+  font-size: 2rem;
   
   
 }
@@ -71,12 +71,7 @@ input[type="checkbox"]{
   cursor: pointer;
 }
 
-.btn{
 
-    background-color: #5123e6;
-    color: #fff;
-    font-size: 1.8rem;
-}
 
 .loginPage-error {
   background-color: rgba(163, 17, 63, 0.993);

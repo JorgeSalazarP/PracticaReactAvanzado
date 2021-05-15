@@ -7,14 +7,12 @@ import Modal from './Modal';
 const AdvertDetail = ({ name,price,photo,sale,tags,onClickDelete }) => {
     
     const [isOpenModal,setIsOpenModal] = React.useState(false);
+    const history = useHistory();
     
     const openModal = () =>{
         setIsOpenModal(!isOpenModal);
     }
 
-
-
-    const history = useHistory();
     return (
 
             <div className="row mt-5">

@@ -1,17 +1,18 @@
 import React from 'react';
 import T from 'prop-types';
 import { Link } from 'react-router-dom';
+import './Advert.css';
 
 const Advert = ({id,name,sale,price,tags}) => {
     return (  
-        <div className="card bg-light mb-3" style={ { maxWidth: 300 } }>
+        <div className="card card-section bg-light mb-5" style={ { maxWidth: 300 } }>
             <div className="card-header">{name}</div>
-            <div className="card-body">
-                <p className="card-title">{price}€</p>
+            <div className="card-body border rounded">
+                <p className="card-title">{`Price ${price}€`}</p>
                 <p className="card-text"> {sale ? 'Buy': 'Sell'} </p>
                 <p className="card-text"> {tags.join(' - ')} </p>
             </div>
-            <Link className="btn btn-block" to={`./advert/${id}`}>
+            <Link className="btn-cards" to={`./advert/${id}`}>
                     More...
             </Link>
         </div>

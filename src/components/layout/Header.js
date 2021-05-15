@@ -10,7 +10,6 @@ import '../adverts/AdvertDetailPage/Modal.css';
 const Header = () => {
 
     const history = useHistory();
-   
     const { setIsLogged } = React.useContext(AuthContext);
     const [isOpenModal,setIsOpenModal] = React.useState(false);
 
@@ -67,6 +66,7 @@ const Header = () => {
                     <button 
                         className="nav-item nav-link btn"
                         onClick = {openModal}
+                        style={{ marginRight:15 }}
                     >
                         Logout
                     </button>
@@ -81,7 +81,7 @@ const Header = () => {
                 </ul>
             </div>
         </nav>
-    )
+    );
 }
 
 export default Header;

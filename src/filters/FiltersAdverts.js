@@ -2,6 +2,7 @@ import React from 'react';
 import T from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import { SelectRange } from '../components/shared/SelectRange';
+import './Filter.css';
 
 const FiltersAdverts = ({ clickSearch, tagsAPI, ...props }) => {
     
@@ -60,7 +61,7 @@ const FiltersAdverts = ({ clickSearch, tagsAPI, ...props }) => {
         
         <div>
             
-            <div className="row p-5">
+            <div className="row p-5 filter">
                 <div className="col-5">
                     <h4> Search Form </h4>
                     <hr />
@@ -94,7 +95,7 @@ const FiltersAdverts = ({ clickSearch, tagsAPI, ...props }) => {
                             ))}
                         </div> 
 
-                        <div>
+                        <div className="radio_buttons">
                             <label>All</label>
                             <input 
                                 type="radio"
@@ -108,7 +109,6 @@ const FiltersAdverts = ({ clickSearch, tagsAPI, ...props }) => {
                                 type="radio"
                                 name="sale"
                                 value={true}
-                                checked={false}
                                 onChange={handleChange}
                                 
                                 
@@ -118,7 +118,6 @@ const FiltersAdverts = ({ clickSearch, tagsAPI, ...props }) => {
                                 type="radio"
                                 name="sale"
                                 value={false}
-                                checked={false}
                                 onChange={handleChange}
                                
                             />
@@ -130,20 +129,22 @@ const FiltersAdverts = ({ clickSearch, tagsAPI, ...props }) => {
                         <SelectRange
                             {...props}
                         />
+                        <div className="filter-buttons">
+                            <button
+                                type="submit"
+                                className="btn mt-5 btn-block btn-outline-primary"
+                            >
+                                Search
+                            </button>
 
-                        <button
-                            type="submit"
-                            className="btn mt-5 btn-block btn-outline-primary"
-                        >
-                            Search
-                        </button>
+                            <button
+                                onClick={handleResetClick}
+                                className="btn mt-5 btn-block btn-outline-primary"
+                            >
+                                Reset
+                            </button>
 
-                        <button
-                            onClick={handleResetClick}
-                            className="btn mt-5 btn-block btn-outline-primary"
-                        >
-                            Reset
-                        </button>
+                        </div>
                     </form>
 
 
