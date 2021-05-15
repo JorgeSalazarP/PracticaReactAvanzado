@@ -1,11 +1,18 @@
 import React from 'react';
 import T from 'prop-types';
 import { useHistory } from 'react-router-dom';
+import Modal from './Modal';
+
 
 const AdvertDetail = ({ name,price,photo,sale,tags,onClickDeleteAdvert }) => {
     
+    const [isOpenModal,setIsOpenModal] = React.useState(false);
+    
+    const openModal = () =>{
+        setIsOpenModal(!isOpenModal);
+    }
+
     const history = useHistory();
-        
     return (
 
             <div className="row mt-5">
@@ -33,11 +40,19 @@ const AdvertDetail = ({ name,price,photo,sale,tags,onClickDeleteAdvert }) => {
                     </button>
                     <button 
                         className="btn btn-outline-info" 
-                        style={ {backgroundColor: 'red', marginLeft: 20}}
-                        onClick={ onClickDeleteAdvert }
+                        style={ {backgroundColor: 'red', marginLeft: 20} }
+                        onClick = {openModal}
                     >
                         Delete
                     </button>
+                    {isOpenModal && 
+                        <Modal 
+                            openModal={openModal}
+                            onClickDeleteAdvert={onClickDeleteAdvert}
+                        />
+                    }
+                    
+                    
     
                 </div>
     

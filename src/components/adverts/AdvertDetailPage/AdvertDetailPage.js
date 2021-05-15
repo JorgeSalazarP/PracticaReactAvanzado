@@ -4,6 +4,8 @@ import { getAdvertDetail, deleteAdvert } from '../../../api/adverts';
 import Spinner from '../../shared/Spinner';
 import AdvertDetail from './AdvertDetail';
 
+
+
 const AdvertDetailPage = ({ history }) => {
     
     const { id } = useParams();
@@ -28,16 +30,15 @@ const AdvertDetailPage = ({ history }) => {
 
     
     const onClickDeleteAdvert = async ()=>{
-        const deleteConfirmed = window.confirm('Are you sure to delete this advert?');
-        if (deleteConfirmed) {
-            try {
-                await deleteAdvert(id);
-                history.push('/');
-            } catch (error) {
-                history.replace('/404');
-            }
-        }
+        console.log('hola')
         
+        try {
+            await deleteAdvert(id);
+            history.push('/');
+        } catch (error) {
+            history.replace('/404');
+        }
+       
     }
 
   

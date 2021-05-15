@@ -47,7 +47,6 @@ const FiltersAdverts = ({ clickSearch, tagsAPI, ...props }) => {
     const handleResetClick = ev =>{
         ev.preventDefault();
         history.replace('/');
-
     }
 
     const handleSubmit = ev =>{
