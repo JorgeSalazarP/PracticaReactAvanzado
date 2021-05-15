@@ -2,14 +2,14 @@ import React from 'react';
 import T from 'prop-types';
 import './Modal.css';
 
-function Modal({ openModal, onClickDeleteAdvert }) {
+function Modal({ openModal, onClickDelete,children }) {
   return (
     <div className="modal">
       <div className="modal_container">
-        <header>Are you sure to delete this advert?</header>
+        <header>{children}</header>
         <div className="content">
           <button 
-            onClick={onClickDeleteAdvert}
+            onClick={onClickDelete}
             className="btn btn-danger bt_modal"
           >
             Accept
@@ -31,7 +31,7 @@ function Modal({ openModal, onClickDeleteAdvert }) {
 }
 
 Modal.propTypes = {
-    onClickDeleteAdvert: T.func.isRequired,
+    onClickDelete: T.func.isRequired,
     openModal: T.func.isRequired
 };
 

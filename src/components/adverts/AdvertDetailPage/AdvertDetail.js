@@ -4,13 +4,15 @@ import { useHistory } from 'react-router-dom';
 import Modal from './Modal';
 
 
-const AdvertDetail = ({ name,price,photo,sale,tags,onClickDeleteAdvert }) => {
+const AdvertDetail = ({ name,price,photo,sale,tags,onClickDelete }) => {
     
     const [isOpenModal,setIsOpenModal] = React.useState(false);
     
     const openModal = () =>{
         setIsOpenModal(!isOpenModal);
     }
+
+
 
     const history = useHistory();
     return (
@@ -48,8 +50,10 @@ const AdvertDetail = ({ name,price,photo,sale,tags,onClickDeleteAdvert }) => {
                     {isOpenModal && 
                         <Modal 
                             openModal={openModal}
-                            onClickDeleteAdvert={onClickDeleteAdvert}
-                        />
+                            onClickDelete={onClickDelete}
+                        >
+                            Are you sure to delete this advert?
+                        </Modal>
                     }
                     
                     

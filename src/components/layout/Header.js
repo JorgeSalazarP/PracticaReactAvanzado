@@ -2,27 +2,27 @@ import React from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import { logout } from '../../api/auth';
 import { AuthContext } from '../../context/AuthContext';
+import Modal from '../adverts/AdvertDetailPage/Modal';
+import '../adverts/AdvertDetailPage/Modal.css';
 
 
 
-
-export const Header = () => {
+const Header = () => {
 
     const history = useHistory();
    
     const { setIsLogged } = React.useContext(AuthContext);
+    const [isOpenModal,setIsOpenModal] = React.useState(false);
+
+    const openModal = () =>{
+        setIsOpenModal(!isOpenModal);
+    }
     
-    
-    const handleClick = () =>{
-        const deleteConfirmed = window.confirm('Are you sure?');
-        if (deleteConfirmed) {
-            logout();
-            setIsLogged(false);
-            history.replace('/login');
+    const onClickDelete = () =>{
+        logout();
+        setIsLogged(false);
+        history.replace('/login');
             
-        }
-
-
     }
 
     return (
@@ -66,10 +66,18 @@ export const Header = () => {
                     </div>
                     <button 
                         className="nav-item nav-link btn"
-                        onClick = {handleClick}
+                        onClick = {openModal}
                     >
                         Logout
                     </button>
+                    {isOpenModal && 
+                        <Modal 
+                            openModal={openModal}
+                            onClickDelete={onClickDelete}
+                        >
+                            Are you sure?
+                        </Modal>
+                    }
                 </ul>
             </div>
         </nav>

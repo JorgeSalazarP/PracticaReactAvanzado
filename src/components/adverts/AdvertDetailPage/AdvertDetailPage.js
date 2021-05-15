@@ -29,9 +29,8 @@ const AdvertDetailPage = ({ history }) => {
     },[setIsLoading,history,id]);
 
     
-    const onClickDeleteAdvert = async ()=>{
-        console.log('hola')
-        
+    const onClickDelete = async ()=>{
+       
         try {
             await deleteAdvert(id);
             history.push('/');
@@ -48,7 +47,7 @@ const AdvertDetailPage = ({ history }) => {
             { isLoading && <Spinner/>}
             <AdvertDetail 
                 advertDetail {...advertDetail}
-                onClickDeleteAdvert={onClickDeleteAdvert}
+                onClickDelete={onClickDelete}
             /> 
         </React.Fragment>
     )
