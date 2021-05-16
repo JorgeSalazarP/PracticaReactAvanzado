@@ -1,7 +1,7 @@
 import React from 'react';
 import InputRange from 'react-input-range';
-import 'react-input-range/lib/css/index.css';
-
+//import 'react-input-range/lib/css/index.css';
+import './SelectRange.css';
 
 export class SelectRange extends React.Component {
     constructor(props) {
@@ -20,6 +20,7 @@ export class SelectRange extends React.Component {
     render() {
       
       return (
+
         <InputRange
           
           maxValue={25000}

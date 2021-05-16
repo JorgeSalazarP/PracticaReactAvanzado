@@ -168,9 +168,7 @@ const NewAdvertForm = ({ tagsAPI, saveNewAdvert }) => {
                     className="btn btn-primary btn-lg btn-block" 
                     value="Publish"     
                 />
-            </div>
-
-
+            </div>     
             {error ? <Error message={error}/>: null}
     
         </form>

@@ -15,7 +15,10 @@ const AdvertDetail = ({ name,price,photo,sale,tags,onClickDelete }) => {
 
     return (
 
-            <div className="row mt-5">
+            <div 
+                className="row mt-5"
+                style={{ height:750 }}
+            >
                 <div className="col-4">
                     <img 
                         src={`${process.env.REACT_APP_API_BASE_URL}${photo}`} alt=""
@@ -29,18 +32,18 @@ const AdvertDetail = ({ name,price,photo,sale,tags,onClickDelete }) => {
                     <ul className="list-group list-group-flush">
                         <li className="list-group-item">  { price }€  </li>
                         <li className="list-group-item"> <b> </b> { sale ? 'Buy':'Sell' } </li>
-                        <li className="list-group-item"> <b> Tag: </b> { tags } </li> 
+                        <li className="list-group-item"> <b> Tag: </b>{`- ${ tags } -`} </li> 
                        
                     </ul>
                     <button 
-                        className="btn btn-outline-info"
+                        className="btn btn-primary"
                         onClick={ ()=>(history.goBack()) }
                     >
                         Return
                     </button>
                     <button 
                         className="btn btn-outline-info" 
-                        style={ {backgroundColor: 'red', marginLeft: 20} }
+                        style={ {backgroundColor: 'red', marginLeft: 20, color:'white'} }
                         onClick = {openModal}
                     >
                         Delete
@@ -68,7 +71,7 @@ AdvertDetail.propTypes = {
     price:T.number,
     sale:T.bool,
     tags:T.array,
-    onClickDeleteAdvert: T.func.isRequired,
+    onClickDeleteAdvert: T.func,
 };
   
 AdvertDetail.defaultProps = {

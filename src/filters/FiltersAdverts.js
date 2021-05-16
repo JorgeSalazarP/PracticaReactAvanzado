@@ -59,10 +59,10 @@ const FiltersAdverts = ({ clickSearch, tagsAPI, ...props }) => {
 
     return ( 
         
-        <div>
+        <div className="mb-5">
             
             <div className="row p-5 filter">
-                <div className="col-5">
+                <div className="col-12">
                     <h4> Search Form </h4>
                     <hr />
 
@@ -79,7 +79,7 @@ const FiltersAdverts = ({ clickSearch, tagsAPI, ...props }) => {
                             
                         />
 
-                        <div className="form-check form-check-inline">
+                        <div className="filter-tags form-check-inline">
                             {tagsAPI.map(tag=>(
                         
                                 <React.Fragment key={tag}>
@@ -126,20 +126,24 @@ const FiltersAdverts = ({ clickSearch, tagsAPI, ...props }) => {
                         
                         </div> 
                         
+                        <label>
+                            Price
+                        </label>
                         <SelectRange
-                            {...props}
+                                {...props}
                         />
+                        
                         <div className="filter-buttons">
                             <button
                                 type="submit"
-                                className="btn mt-5 btn-block btn-outline-primary"
+                                className="btn mt-5 btn-block btn-primary"
                             >
                                 Search
                             </button>
 
                             <button
                                 onClick={handleResetClick}
-                                className="btn mt-5 btn-block btn-outline-primary"
+                                className="btn mt-5 btn-block btn-danger"
                             >
                                 Reset
                             </button>
