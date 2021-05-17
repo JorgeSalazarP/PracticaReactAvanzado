@@ -1,6 +1,8 @@
 import React from 'react';
 import T from 'prop-types';
 import Error from '../../error/Error';
+import { rangePrice } from '../../shared/rangePrice';
+
 
 const NewAdvertForm = ({ tagsAPI, saveNewAdvert }) => {
 
@@ -73,8 +75,8 @@ const NewAdvertForm = ({ tagsAPI, saveNewAdvert }) => {
             setError('Name *Obligatory field');
             return false;
         }
-        if(price < 0 || price > 25000){
-            setError('Price 0-25000€');
+        if(price < rangePrice.min || price > rangePrice.max){
+            setError(`Price ${rangePrice.min}-${rangePrice.max}`);
             return false;
         }
 

@@ -30,10 +30,8 @@ const NewAdvertPage = ({ history }) => {
 
     const saveNewAdvert = async newAdvert =>{
         
+        setIsLoading(true);
         try {
-
-            setIsLoading(true);
-
             const data = new FormData();
             data.append('name',newAdvert.name);
             data.append('price',newAdvert.price);
@@ -43,12 +41,12 @@ const NewAdvertPage = ({ history }) => {
                 data.append('photo',newAdvert.photo);
             }
             await createNewAdvert(data);
+            setIsLoading(false);
             history.push('/');
           
         } catch (error) {
-            history.replace('/404');
-        }finally{
             setIsLoading(false);
+            history.replace('/404');
         }
 
     }

@@ -14,22 +14,20 @@ const LoginPage = () => {
     const [isLoading,setIsLoading] = React.useState(false);
     const [error,setError] = React.useState(null);
     const [isChecked, setIsChecked] = React.useState(false);
-
-   
-    const handleSubmit = async (credentials) =>{
     
+
+
+    const handleSubmit = async (credentials) =>{
+
+        setError(null);
+        setIsLoading(true);
         try {
-            setError(null);
-            setIsLoading(true);
             await login(credentials,isChecked);
-            setIsLogged(true);
-           
-            
-        } catch (error) {
-            setError(error);
-        }finally{
             setIsLoading(false);
-            
+            setIsLogged(true);
+        } catch (error) {
+            setIsLoading(false);
+            setError(error);
         }
 
     }

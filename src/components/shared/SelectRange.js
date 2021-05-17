@@ -1,6 +1,6 @@
 import React from 'react';
 import InputRange from 'react-input-range';
-//import 'react-input-range/lib/css/index.css';
+import { rangePrice } from './rangePrice';
 import './SelectRange.css';
 
 export class SelectRange extends React.Component {
@@ -8,7 +8,7 @@ export class SelectRange extends React.Component {
       super(props);
    
       this.state = {
-        value: { min: 0, max: 25000 },
+        value: { min: rangePrice.min, max: rangePrice.max },
       }; 
       
     }
@@ -22,9 +22,8 @@ export class SelectRange extends React.Component {
       return (
 
         <InputRange
-          
-          maxValue={25000}
-          minValue={0}
+          maxValue={rangePrice.max}
+          minValue={rangePrice.min}
           value={this.state.value}
           onChange={value => this.setState({value})}
 
