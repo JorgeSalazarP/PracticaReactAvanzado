@@ -100,7 +100,7 @@ const NewAdvertForm = ({ tagsAPI, saveNewAdvert }) => {
         
         <form
             onSubmit={handleSubmit}
-            style={{ height:680 }}
+            style={{ height:700 }}
         >
 
             <label htmlFor="input_name">Name</label>

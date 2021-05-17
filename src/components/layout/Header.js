@@ -30,7 +30,7 @@ const Header = () => {
 
             <div className="navbar-collapse">
                 <div className="navbar-nav "  
-                    style={{fontSize: 20, padding: 5}}
+                    style={{fontSize: 20, padding: 8}}
                 >
 
                     <NavLink 
@@ -56,17 +56,13 @@ const Header = () => {
                 </div>
             </div>
 
-            <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
-                <ul className="navbar-nav ml-auto">
-                    <div className="nav-item nav-link text-info">
-                        <span>
-                            
-                        </span>
-                    </div>
+            
+                <div className="navbar-nav ml-auto">
+                   
                     <button 
-                        className="nav-item nav-link btn"
+                        className="nav-item nav-link"
                         onClick = {openModal}
-                        style={{ marginRight:15 }}
+                        style={{ marginRight:15, fontSize: 20 }}
                     >
                         Logout
                     </button>
@@ -78,8 +74,8 @@ const Header = () => {
                             Are you sure?
                         </Modal>
                     }
-                </ul>
-            </div>
+                </div>
+            
         </nav>
     );
 }

@@ -17,7 +17,7 @@ const AdvertDetail = ({ name,price,photo,sale,tags,onClickDelete }) => {
 
             <div 
                 className="row mt-5"
-                style={{ height:750 }}
+                style={{ height:780 }}
             >
                 <div className="col-4">
                     <img 
