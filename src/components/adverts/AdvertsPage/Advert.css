@@ -1,4 +1,9 @@
-
+body{
+    background: darkgray;
+    background: linear-gradient(to right, #eeeeee 10%, #eeeeee 18%, #eeeeee 28%);
+  
+   
+}
 .card-header{
     display: flex;
     align-items: center;

@@ -59,106 +59,111 @@ const FiltersAdverts = ({ clickSearch, tagsAPI, ...props }) => {
 
     return ( 
         
-        <div className="mb-5">
-            
-            <div className="row p-5 filter">
-                <div className="col-12">
-                    <h4> Search Form </h4>
-                    <hr />
-
-                    <form 
-                        onSubmit={handleSubmit}
-                    >
-                        <input 
-                            type="text"
-                            placeholder="Find your advert"
-                            className="form-control"
-                            name="name"
-                            value={name}
-                            onChange={handleChange}
-                            
-                        />
-
-                        <div className="filter-tags form-check-inline">
-                            {tagsAPI.map(tag=>(
-                        
-                                <React.Fragment key={tag}>
-                                    <label>{tag}</label>
+        
+            <div className="container container_search">
+                
+                <div className="row">
+                    <div className="col-12 col-md-8 order-2 order-md-1">
+                        <h2 className="mb-3">Search Adverts</h2>
+                        <form 
+                            onSubmit={handleSubmit}
+                        >
+                            <div className="row">
+                                <div className="col-12 col-sm-6 mb-3 search_field">
                                     <input 
-                                        className="form-check-input" 
-                                        type="checkbox"
-                                        value={tag}
-                                        name="tag"                    
-                                        onChange={handleChangeChecked}
+                                        type="text"
+                                        placeholder="Find your advert"
+                                        className="form-control search_name"
+                                        name="name"
+                                        value={name}
+                                        onChange={handleChange}        
                                     />
-                                </React.Fragment>
-                            ))}
-                        </div> 
-
-                        <div className="radio_buttons">
-                            <label>All</label>
-                            <input 
-                                type="radio"
-                                name="sale"
-                                value="All"                               
-                                onChange={handleChange}
-
-                            />
-                            <label>Buy</label>
-                            <input 
-                                type="radio"
-                                name="sale"
-                                value={true}
-                                onChange={handleChange}
-                                
-                                
-                            />
-                            <label>Sell</label>
-                            <input 
-                                type="radio"
-                                name="sale"
-                                value={false}
-                                onChange={handleChange}
                                
-                            />
+                                </div>
+                            </div>    
+                                <div className="filter-tags form-check-inline">
+                                    {tagsAPI.map(tag=>(
+                                
+                                        <React.Fragment key={tag}>
+                                            <label>{tag}</label>
+                                            <input 
+                                                className="form-check-input" 
+                                                type="checkbox"
+                                                value={tag}
+                                                name="tag"                    
+                                                onChange={handleChangeChecked}
+                                            />
+                                        </React.Fragment>
+                                    ))}
+                                </div> 
+
+                                <div className="row mt-3">
+                                    <div className="col-12 col-sm-6 mb-3">
+                                          
+                                        <div className="radio_buttons">
+                                            <label>All</label>
+                                            <input 
+                                                type="radio"
+                                                name="sale"
+                                                value="All"                               
+                                                onChange={handleChange}
+
+                                            />
+                                            <label>Buy</label>
+                                            <input 
+                                                type="radio"
+                                                name="sale"
+                                                value={true}
+                                                onChange={handleChange}
+                                                
+                                                
+                                            />
+                                            <label>Sell</label>
+                                            <input 
+                                                type="radio"
+                                                name="sale"
+                                                value={false}
+                                                onChange={handleChange}
+                
+                                            />               
+                                    
                             
-                        
-                        
-                        </div> 
-                        
-                        <label>
-                            Price
-                        </label>
-                        <SelectRange
-                                {...props}
-                        />
-                        
-                        <div className="filter-buttons">
-                            <button
-                                type="submit"
-                                className="btn mt-5 btn-block btn-primary"
-                            >
-                                Search
-                            </button>
+                                        </div> 
+                                    </div>
+                                </div>
+                                <div className="row">
+                                    <div className="col-12">
+                                        <label className="mb-2">
+                                            Price
+                                        </label>
+                                        <SelectRange
+                                                {...props}
+                                              
+                                        />
+                                    </div>
+                                </div>
+                                <div className="row mb-5">
+                                    <div className="col container_buttons">
+                                        <button
+                                            type="submit"
+                                            className="btn btn-primary btn_search"
+                                        >
+                                            Search
+                                        </button>
 
-                            <button
-                                onClick={handleResetClick}
-                                className="btn mt-5 btn-block btn-danger"
-                            >
-                                Reset
-                            </button>
-
-                        </div>
-                    </form>
-
-
+                                        <button
+                                            onClick={handleResetClick}
+                                            className="btn btn-danger btn_search"
+                                        >
+                                            Reset
+                                        </button>
+                                    </div>        
+                                </div>
+                        </form>
+                    </div>                          
                 </div>
 
-
-                
             </div>
-
-        </div>
 
 
     );
