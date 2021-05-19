@@ -6,6 +6,7 @@ import AdvertDetail from './AdvertDetail';
 
 
 
+
 const AdvertDetailPage = ({ history }) => {
     
     const { id } = useParams();

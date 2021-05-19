@@ -63,7 +63,7 @@ const FiltersAdverts = ({ clickSearch, tagsAPI, ...props }) => {
             <div className="container container_search">
                 
                 <div className="row">
-                    <div className="col-12 col-md-8 order-2 order-md-1">
+                    <div className="col-12">
                         <h2 className="mb-3">Search Adverts</h2>
                         <form 
                             onSubmit={handleSubmit}

@@ -96,88 +96,88 @@ const NewAdvertForm = ({ tagsAPI, saveNewAdvert }) => {
     }
 
 
-    return ( 
-        
-        <form
-            onSubmit={handleSubmit}
-            style={{ height:700 }}
-        >
-
+    return (
+      <div className="row">
+        <div className="col-12 order-2 order-md-1 d-flex align-items-center justify-content-center">
+          <form 
+            onSubmit={handleSubmit} 
+            style={{ height: 700 }}>
+              
             <label htmlFor="input_name">Name</label>
-            <input 
-                type="text" 
-                className="form-control" 
-                id="input_name"
-                name="name"
-                value={name}
-                onChange={handleChange}
+            <input
+              type="text"
+              className="form-control mb-2"
+              name="name"
+              style={{ fontSize: 15 }}
+              value={name}
+              onChange={handleChange}
             />
-            <label htmlFor="input_price">Price</label>
-            <input 
-                type="number" 
-                className="form-control" 
-                id="input_price"
-                name="price"
-                style={{ fontSize:15 }}
-                value={price}
-                onChange={handleChange}
-            />
-            <label htmlFor="buy_sell">Buy or Sell?</label>
-            <select 
-                className="form-control" 
-                id="buy_sell"
-                name="sale"
-                onChange={handleChangeSale}
-                style={{ fontSize:15 }}
-            >
 
-                <option value={true}>Buy</option>
-                <option value={false}>Sell</option>
+            <label htmlFor="input_price">Price</label>
+            <input
+              type="number"
+              className="form-control mb-2"
+              id="input_price"
+              name="price"
+              style={{ fontSize: 15 }}
+              value={price}
+              onChange={handleChange}
+            />
+
+            <label htmlFor="buy_sell">Buy or Sell?</label>
+            <select
+              className="form-control mb-2"
+              id="buy_sell"
+              name="sale"
+              onChange={handleChangeSale}
+              style={{ fontSize: 15 }}
+            >
+              <option value={true}>Buy</option>
+              <option value={false}>Sell</option>
             </select>
-            <div className="form-check form-check-inline">
-                {tagsAPI.map(tag=>(
-                       
-                    <React.Fragment key={tag}>
-                        <label>{tag}</label>
-                        <input 
-                            className="form-check-input" 
-                            type="checkbox"
-                            value={tag}
-                            name="tag"
-                            onChange={handleChangeChecked}
-                            
-                        />
-                    </React.Fragment>
-                ))}
-            </div> 
-                       
-            <div className="form_field">
-                               
-                               
-                <label htmlFor="file">Upload image</label>
-                <input 
-                    type="file"  
-                    accept="image/*"
-                    name="photo"
-                    onChange={handleFile}
-                />    
-                 
+            <div className="form-check form-check-inline mb-2">
+              {tagsAPI.map((tag) => (
+                <React.Fragment key={tag}>
+                  <label>{tag}</label>
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    value={tag}
+                    name="tag"
+                    onChange={handleChangeChecked}
+                  />
+                </React.Fragment>
+              ))}
             </div>
-                
+
             <div className="form_field">
-                <input 
-                    type="submit" 
-                    className="btn btn-primary btn-lg btn-block" 
-                    value="Publish"     
-                />
-            </div>     
-            {error ? <Error message={error}/>: null}
-    
-        </form>
-         
-      
-        
-     );
+              <label htmlFor="file">Upload image</label>
+              <input
+                type="file"
+                accept="image/*"
+                name="photo"
+                onChange={handleFile}
+              />
+            </div>
+
+            <div className="form_field">
+              <input
+                type="submit"
+                className="btn btn-primary btn-block mb-2"
+                value="Publish"
+              />
+            </div>
+            {error 
+              ? 
+              <Error 
+                message={error} 
+              /> 
+              : null
+            }
+          </form>
+        </div>
+      </div>
+    );
 }
 
 NewAdvertForm.propTypes = {

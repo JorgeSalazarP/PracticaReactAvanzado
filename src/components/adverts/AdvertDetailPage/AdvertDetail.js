@@ -2,6 +2,7 @@ import React from 'react';
 import T from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import Modal from './Modal';
+import './AdvertDetail.css'
 
 
 const AdvertDetail = ({ name,price,photo,sale,tags,onClickDelete }) => {
@@ -18,36 +19,42 @@ const AdvertDetail = ({ name,price,photo,sale,tags,onClickDelete }) => {
             <div 
                 className="row mt-5"
                 style={{ height:780 }}
-            >
-                <div className="col-4">
-                    <img 
-                        src={`${process.env.REACT_APP_API_BASE_URL}${photo}`} alt=""
-                        className="img-thumbnail animate__animated animate__fadeInLeft"
-                    />
-                  
-                </div>
-    
-                <div className="col-8 ">
-                    <h3> { name } </h3>
-                    <ul className="list-group list-group-flush">
-                        <li className="list-group-item">  { price }€  </li>
-                        <li className="list-group-item"> <b> </b> { sale ? 'Buy':'Sell' } </li>
-                        <li className="list-group-item"> <b> Tag: </b>{`- ${ tags } -`} </li> 
+            >   
+                
+                    <div className="col-4">
+                        {photo &&
+                            <img 
+                                src={`${process.env.REACT_APP_API_BASE_URL}${photo}`} alt=""
+                                className="img-thumbnail animate__animated animate__fadeInLeft"
+                            />
+                        }
+                    </div>
+                        
+                <div className="col-6">
+                    
+
+                    <div className="card-header d-flex align-items-center justify-content-center">{name}</div>
+                        <div className="card-body border rounded">
+                            <p className="card-title">{`${price}€`}</p>
+                            <p className="card-text"> {sale ? 'Buy': 'Sell'} </p>
+                            <p className="card-text"> {tags} </p>
+                        </div>
                        
-                    </ul>
-                    <button 
-                        className="btn btn-primary"
-                        onClick={ ()=>(history.goBack()) }
-                    >
-                        Return
-                    </button>
-                    <button 
-                        className="btn btn-outline-info" 
-                        style={ {backgroundColor: 'red', marginLeft: 20, color:'white'} }
-                        onClick = {openModal}
-                    >
-                        Delete
-                    </button>
+                        <div className="d-flex align-items-center justify-content-center">
+                            <button 
+                                className="btn btn-primary w-50"
+                                onClick={ ()=>(history.goBack()) }
+                            >
+                                Return
+                            </button>
+                            <button 
+                                className="btn btn-outline-info w-50" 
+                                style={ {backgroundColor: 'red', marginLeft: 20, color:'white'} }
+                                onClick = {openModal}
+                            >
+                                Delete
+                            </button>
+                        </div>
                     {isOpenModal && 
                         <Modal 
                             openModal={openModal}
