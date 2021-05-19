@@ -2,7 +2,7 @@ import React from 'react';
 import T from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import Modal from './Modal';
-import './AdvertDetail.css'
+
 
 
 const AdvertDetail = ({ name,price,photo,sale,tags,onClickDelete }) => {
@@ -42,13 +42,13 @@ const AdvertDetail = ({ name,price,photo,sale,tags,onClickDelete }) => {
                        
                         <div className="d-flex align-items-center justify-content-center">
                             <button 
-                                className="btn btn-primary w-50"
+                                className="btn btn-primary w-40"
                                 onClick={ ()=>(history.goBack()) }
                             >
                                 Return
                             </button>
                             <button 
-                                className="btn btn-outline-info w-50" 
+                                className="btn btn-outline-info w-40" 
                                 style={ {backgroundColor: 'red', marginLeft: 20, color:'white'} }
                                 onClick = {openModal}
                             >
