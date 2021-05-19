@@ -37,7 +37,7 @@ const AdvertDetail = ({ name,price,photo,sale,tags,onClickDelete }) => {
                         <div className="card-body border rounded">
                             <p className="card-title">{`${price}€`}</p>
                             <p className="card-text"> {sale ? 'Buy': 'Sell'} </p>
-                            <p className="card-text"> {tags} </p>
+                            <p className="card-text"> {`${tags} `} </p>
                         </div>
                        
                         <div className="d-flex align-items-center justify-content-center">
