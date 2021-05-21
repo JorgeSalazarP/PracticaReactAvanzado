@@ -14,8 +14,20 @@ const initialState = {
 
 export default function (state = initialState, action){
     switch (action.type) {
+        case ADVERTS_CREATED_REQUEST:
+            return{
+                ...state,
+                loading: true
+            }
         
-    
+        case ADVERTS_CREATED_SUCCESS:
+            return{
+                ...state,
+                loading: false,
+                adverts:[...state.adverts, action.payload]
+            }
+        
+
         default:
             return state;
     }
