@@ -7,15 +7,20 @@ import {
     ADVERTS_CREATED_FAILURE,
     ADVERTS_DELETED_REQUEST,
     ADVERTS_DELETED_SUCCESS,
-    ADVERTS_DELETED_FAILURE
+    ADVERTS_DELETED_FAILURE,
+    ADVERTS_DETAIL_REQUEST,
+    ADVERTS_DETAIL_SUCCESS,
+    ADVERTS_DETAIL_FAILURE
 } from '../types';
+
 
 
 const initialState = {
     adverts: [],
     error: null,
     loading: false,
-    deleteAdvert: null
+    deleteAdvert: null,
+    detailAdvert: []
 
 }
 
@@ -23,6 +28,7 @@ export default function (state = initialState, action){
     switch (action.type) {
         case ADVERTS_CREATED_REQUEST:
         case ADVERTS_LOADED_REQUEST:
+        case ADVERTS_DETAIL_REQUEST:
             return{
                 ...state,
                 loading: action.payload
@@ -36,6 +42,7 @@ export default function (state = initialState, action){
         case ADVERTS_CREATED_FAILURE:
         case ADVERTS_LOADED_FAILURE:
         case ADVERTS_DELETED_FAILURE:
+        case ADVERTS_DETAIL_FAILURE:
             return{
                 ...state,
                 loading: false,
@@ -62,6 +69,12 @@ export default function (state = initialState, action){
                 deleteAdvert:null
             }
         
+        case ADVERTS_DETAIL_SUCCESS:
+            return{
+                ...state,
+                loading: false,
+                detailAdvert:action.payload
+            }
 
         default:
             return state;

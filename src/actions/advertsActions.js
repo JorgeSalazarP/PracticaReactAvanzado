@@ -7,10 +7,13 @@ import {
     ADVERTS_CREATED_FAILURE,
     ADVERTS_DELETED_REQUEST,
     ADVERTS_DELETED_SUCCESS,
-    ADVERTS_DELETED_FAILURE
+    ADVERTS_DELETED_FAILURE,
+    ADVERTS_DETAIL_REQUEST,
+    ADVERTS_DETAIL_SUCCESS,
+    ADVERTS_DETAIL_FAILURE
 } from '../types';
 
-import { createNewAdvert, getAdverts, deleteAdvert } from '../api/adverts';
+import { createNewAdvert, getAdverts, deleteAdvert, getAdvertDetail } from '../api/adverts';
 
 
 
@@ -47,10 +50,10 @@ const advertsCreatedRequest = () =>({
     payload:true
 });
 
-const advertCreatedSuccess = (advert) =>({
+const advertCreatedSuccess = (adverts) =>({
 
     type: ADVERTS_CREATED_SUCCESS,
-    payload: advert
+    payload: adverts
 
 });
 
@@ -123,13 +126,47 @@ const advertsDeletedRequest = (id) =>({
 });
 
 const advertsDeletedSuccess = () =>({
-
     type: ADVERTS_DELETED_SUCCESS
    
 });
 
 const advertsDeletedFailure = () =>({
     type: ADVERTS_DELETED_FAILURE,
+    payload:true
+
+});
+
+//detail advert
+export function advertsDetailAction(id){
+
+    return async (dispatch)=>{
+        dispatch(advertsDetailRequest());
+
+        try {
+            const advert = await getAdvertDetail(id);
+            dispatch(advertsDetailSuccess(advert));
+        } catch (error) {
+            dispatch(advertsDetailFailure());
+        }
+
+    }
+
+}
+
+const advertsDetailRequest = () =>({
+    type:ADVERTS_DETAIL_REQUEST,
+    payload:true
+});
+
+
+const advertsDetailSuccess = (advert) =>({
+    type: ADVERTS_DETAIL_SUCCESS,
+    payload: advert
+});
+
+
+const advertsDetailFailure = ()=>({
+    type: ADVERTS_DETAIL_FAILURE,
     payload:true
 
 });

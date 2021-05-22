@@ -1,35 +1,41 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { getAdvertDetail } from '../../../api/adverts';
 import Spinner from '../../shared/Spinner';
 import AdvertDetail from './AdvertDetail';
-import { useDispatch } from 'react-redux';
-import { deleteAdvertAction } from '../../../actions/advertsActions';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteAdvertAction, advertsDetailAction } from '../../../actions/advertsActions';
+
 
 
 const AdvertDetailPage = ({ history }) => {
     
     const { id } = useParams();
-    const [isLoading,setIsLoading] = React.useState(false);
-    const [advertDetail, setAdvertDetail] = React.useState([]);
-    
     const dispatch = useDispatch();
 
     React.useEffect(()=>{
-        const getAdvertById = async ()=>{
-            try {
-                setIsLoading(true);
-                setAdvertDetail(await getAdvertDetail(id));
-            } catch (error) {
-                history.replace('/404');
-            }finally{
-                setIsLoading(false);
-            }
-        }
 
-        getAdvertById();
+        const loadedAdvert = () => dispatch(advertsDetailAction(id));
+        loadedAdvert();
+      },[]);
+    
+    const advertDetail = useSelector(state =>state.adverts.detailAdvert);
+    const loading = useSelector(state =>state.adverts.loading);
+
+    // React.useEffect(()=>{
+    //     const getAdvertById = async ()=>{
+    //         try {
+    //             setIsLoading(true);
+    //             setAdvertDetail(await getAdvertDetail(id));
+    //         } catch (error) {
+    //             history.replace('/404');
+    //         }finally{
+    //             setIsLoading(false);
+    //         }
+    //     }
+
+    //     getAdvertById();
         
-    },[setIsLoading,history,id]);
+    // },[setIsLoading,history,id]);
 
     
     const onClickDelete = async ()=>{
@@ -49,7 +55,7 @@ const AdvertDetailPage = ({ history }) => {
     return (
 
         <React.Fragment>
-            { isLoading && <Spinner/>}
+            { loading && <Spinner/>}
             <AdvertDetail 
                 advertDetail {...advertDetail}
                 onClickDelete={onClickDelete}

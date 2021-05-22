@@ -17,11 +17,11 @@ const AdvertsPage = ({ history } ) => {
 
     React.useEffect(()=>{
 
-      const loadedAdvert = () => dispatch(advertsLoadAction());
-      loadedAdvert();
+      const loadedAdverts = () => dispatch(advertsLoadAction());
+      loadedAdverts();
     },[]);
 
-    const adverts = useSelector(state=> state.adverts.adverts );
+    const adverts = useSelector(state=> state.adverts.adverts);
 
     // React.useEffect(()=>{
       
