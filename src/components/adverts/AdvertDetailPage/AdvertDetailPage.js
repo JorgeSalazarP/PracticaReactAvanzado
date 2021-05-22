@@ -1,10 +1,10 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { getAdvertDetail, deleteAdvert } from '../../../api/adverts';
+import { getAdvertDetail } from '../../../api/adverts';
 import Spinner from '../../shared/Spinner';
 import AdvertDetail from './AdvertDetail';
-
-
+import { useDispatch } from 'react-redux';
+import { deleteAdvertAction } from '../../../actions/advertsActions';
 
 
 const AdvertDetailPage = ({ history }) => {
@@ -12,7 +12,9 @@ const AdvertDetailPage = ({ history }) => {
     const { id } = useParams();
     const [isLoading,setIsLoading] = React.useState(false);
     const [advertDetail, setAdvertDetail] = React.useState([]);
-   
+    
+    const dispatch = useDispatch();
+
     React.useEffect(()=>{
         const getAdvertById = async ()=>{
             try {
@@ -32,12 +34,14 @@ const AdvertDetailPage = ({ history }) => {
     
     const onClickDelete = async ()=>{
        
-        try {
-            await deleteAdvert(id);
-            history.push('/');
-        } catch (error) {
-            history.replace('/404');
-        }
+        dispatch(deleteAdvertAction(id));
+        history.push('/');
+        // try {
+        //     await deleteAdvert(id);
+        //     history.push('/');
+        // } catch (error) {
+        //     history.replace('/404');
+        // }
        
     }
 

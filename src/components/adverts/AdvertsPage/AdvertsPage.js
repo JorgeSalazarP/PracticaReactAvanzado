@@ -11,9 +11,8 @@ import { advertsLoadAction } from '../../../actions/advertsActions';
 
 const AdvertsPage = ({ history } ) => {
 
-    const [adverts, setAdverts] = React.useState([]);
-    const [tagsAPI,setTagsAPI] = React.useState([]);
 
+    const [tagsAPI,setTagsAPI] = React.useState([]);
     const dispatch = useDispatch();
 
     React.useEffect(()=>{
@@ -21,6 +20,8 @@ const AdvertsPage = ({ history } ) => {
       const loadedAdvert = () => dispatch(advertsLoadAction());
       loadedAdvert();
     },[]);
+
+    const adverts = useSelector(state=> state.adverts.adverts );
 
     // React.useEffect(()=>{
       
