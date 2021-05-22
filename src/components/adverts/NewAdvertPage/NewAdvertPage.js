@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAdvertsTags,createNewAdvert } from '../../../api/adverts';
+import { getAdvertsTags } from '../../../api/adverts';
 import NewAdvertForm from './NewAdvertForm';
 import Spinner from '../../shared/Spinner';
 import { createNewAdvertAction } from '../../../actions/advertsActions';
@@ -12,7 +12,8 @@ const NewAdvertPage = ({ history }) => {
     const [isLoading,setIsLoading] = React.useState(false);
 
     const dispatch = useDispatch();
-    
+    const loading = useSelector(state => state.adverts.loading);
+
     React.useEffect(() => {
         
         const getTags = async ()=>{
@@ -32,11 +33,11 @@ const NewAdvertPage = ({ history }) => {
     }, [setIsLoading,history]);
     
     
-    const createNewAdvert = (newAdvert) => dispatch(createNewAdvertAction(newAdvert));
+    const createAdvert = (newAdvert) => dispatch(createNewAdvertAction(newAdvert));
 
     const saveNewAdvert = async newAdvert =>{
-        
-        await createNewAdvert(newAdvert);
+        await createAdvert(newAdvert);
+        history.push('/');
 
         // setIsLoading(true);
         // try {
@@ -65,7 +66,7 @@ const NewAdvertPage = ({ history }) => {
 
         <main className="container">
             <h1>NEW ADVERT</h1>    
-            { isLoading && <Spinner/>}
+            { loading && <Spinner/>}
             {(tagsAPI.length > 0) 
                 && <NewAdvertForm 
                 tagsAPI={tagsAPI}

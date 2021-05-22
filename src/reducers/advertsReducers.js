@@ -18,13 +18,18 @@ export default function (state = initialState, action){
             return{
                 ...state,
                 loading: true
-            }
-        
+            }   
         case ADVERTS_CREATED_SUCCESS:
             return{
                 ...state,
                 loading: false,
                 adverts:[...state.adverts, action.payload]
+            }
+        case ADVERTS_CREATED_FAILURE:
+            return{
+                ...state,
+                loading: false,
+                error: action.payload
             }
         
 

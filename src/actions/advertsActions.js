@@ -3,16 +3,29 @@ import {
     ADVERTS_CREATED_SUCCESS,
     ADVERTS_CREATED_FAILURE
 } from '../types';
+import { createNewAdvert } from '../api/adverts';
+
 
 
 //Create new advert
 
-export function createNewAdvertAction(advert){
-    return (dispatch) =>{
-        
+export function createNewAdvertAction(newAdvert){
+
+    return async (dispatch) =>{
         dispatch (createAdvert());
         try {
-            dispatch(createdAdvertSuccess(advert));
+            
+                const data = new FormData();
+                data.append('name',newAdvert.name);
+                data.append('price',newAdvert.price);
+                data.append('sale',newAdvert.sale);
+                data.append('tags',newAdvert.tags);
+                if(newAdvert.photo){
+                    data.append('photo',newAdvert.photo);
+                }
+                
+                await createNewAdvert(data);
+                dispatch(createdAdvertSuccess(data));
             
         } catch (error) {
             dispatch(createdAdvertFailure(true));
@@ -35,7 +48,8 @@ const createdAdvertSuccess = (advert) =>({
 
 });
 
-const createdAdvertFailure = () =>({
+const createdAdvertFailure = (stateError) =>({
 
-    type: ADVERTS_CREATED_FAILURE
+    type: ADVERTS_CREATED_FAILURE,
+    payload:stateError
 })
