@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAdvertsTags } from '../../../api/adverts';
 import NewAdvertForm from './NewAdvertForm';
 import Spinner from '../../shared/Spinner';
-import { createNewAdvertAction } from '../../../actions/advertsActions';
+import { createNewAdvertAction } from '../../../store/actions';
 
 
 const NewAdvertPage = ({ history }) => {

@@ -1,20 +1,20 @@
 import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
-import { AuthContext } from '../context/AuthContext';
+import { useSelector } from 'react-redux';
+import { getIsLogged } from '../store/selectors';
 
 const PublicRoute = ({
   component: Component,
   ...rest
 }) => {
-  
-  const { isLogged } = React.useContext(AuthContext);
-  
+
+  const isLogged = useSelector( getIsLogged );
   return (
 
     <Route { ...rest }
 
       component={ (props) => (
-        ( !isLogged )
+      ( !isLogged )
           ? ( <Component { ...props } /> )
           : ( <Redirect to='/' /> )
       )}

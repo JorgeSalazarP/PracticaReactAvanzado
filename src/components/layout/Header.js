@@ -1,7 +1,6 @@
 import React from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import { logout } from '../../api/auth';
-import { AuthContext } from '../../context/AuthContext';
 import Modal from '../adverts/AdvertDetailPage/Modal';
 import '../adverts/AdvertDetailPage/Modal.css';
 
@@ -10,7 +9,6 @@ import '../adverts/AdvertDetailPage/Modal.css';
 const Header = () => {
 
     const history = useHistory();
-    const { setIsLogged } = React.useContext(AuthContext);
     const [isOpenModal,setIsOpenModal] = React.useState(false);
 
     const openModal = () =>{
@@ -19,7 +17,7 @@ const Header = () => {
     
     const onClickDelete = () =>{
         logout();
-        setIsLogged(false);
+        //setIsLogged(false);
         history.replace('/login');
             
     }

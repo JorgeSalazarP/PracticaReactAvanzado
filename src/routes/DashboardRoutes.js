@@ -9,9 +9,8 @@ import { Footer } from '../components/layout/Footer';
 const DashboardRoutes = () => {
     
     return (
-        
         <div>
-            <Header/>
+        <Header/>
            
             <div className = "container mt-5">
                 <Switch>
@@ -37,7 +36,7 @@ const DashboardRoutes = () => {
                 </Switch>
             </div>
 
-            <Footer />
+        <Footer />
         </div>
 
     )

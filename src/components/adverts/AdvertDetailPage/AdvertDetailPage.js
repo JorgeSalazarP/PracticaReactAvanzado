@@ -2,25 +2,25 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import Spinner from '../../shared/Spinner';
 import AdvertDetail from './AdvertDetail';
+
+//Redux
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteAdvertAction, advertsDetailAction } from '../../../actions/advertsActions';
+import { deleteAdvertAction, advertsDetailAction } from '../../../store/actions';
+import { getUi, getSelectedAdvert } from '../../../store/selectors';
 
 
 
-const AdvertDetailPage = ({ history }) => {
+const AdvertDetailPage = ({history}) => {
     
     const { id } = useParams();
     const dispatch = useDispatch();
-
-    React.useEffect(()=>{
-
-        const loadedAdvert = () => dispatch(advertsDetailAction(id));
-        loadedAdvert();
-      },[]);
+    const { isLoading } = useSelector(getUi);
+    const advertDetail = useSelector(getSelectedAdvert);
     
-    const advertDetail = useSelector(state =>state.adverts.detailAdvert);
-    const loading = useSelector(state =>state.adverts.loading);
-
+    React.useEffect(()=>{
+        dispatch(advertsDetailAction(id));
+    },[]);
+   
     // React.useEffect(()=>{
     //     const getAdvertById = async ()=>{
     //         try {
@@ -38,24 +38,22 @@ const AdvertDetailPage = ({ history }) => {
     // },[setIsLoading,history,id]);
 
     
-    const onClickDelete = async ()=>{
-       
+    const onClickDelete = () =>{
         dispatch(deleteAdvertAction(id));
-        history.push('/');
+        
         // try {
         //     await deleteAdvert(id);
         //     history.push('/');
         // } catch (error) {
         //     history.replace('/404');
         // }
-       
     }
 
   
     return (
 
         <React.Fragment>
-            { loading && <Spinner/>}
+            { isLoading && <Spinner/>}
             <AdvertDetail 
                 advertDetail {...advertDetail}
                 onClickDelete={onClickDelete}

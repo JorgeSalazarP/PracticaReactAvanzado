@@ -1,27 +1,24 @@
 import React from 'react';
-import { getAdverts, getAdvertsTags } from '../../../api/adverts';
+import { getAdvertsTags } from '../../../api/adverts';
 import AdvertsList from './AdvertsList';
 import EmptyList from './EmptyList';
 
 //REDUX
 import { useDispatch, useSelector } from 'react-redux';
-import { advertsLoadAction } from '../../../actions/advertsActions';
+import { advertsLoadAction } from '../../../store/actions';
+import { getAdverts } from '../../../store/selectors';
 
 
-
-const AdvertsPage = ({ history } ) => {
-
+const AdvertsPage = () => {
 
     const [tagsAPI,setTagsAPI] = React.useState([]);
     const dispatch = useDispatch();
-
+    const adverts = useSelector(getAdverts);
     React.useEffect(()=>{
-
-      const loadedAdverts = () => dispatch(advertsLoadAction());
-      loadedAdverts();
+      dispatch(advertsLoadAction());
     },[]);
+    
 
-    const adverts = useSelector(state=> state.adverts.adverts);
 
     // React.useEffect(()=>{
       

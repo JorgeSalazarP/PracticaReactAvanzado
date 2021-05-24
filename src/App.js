@@ -1,15 +1,17 @@
 import React from 'react';
 import T from 'prop-types';
-import AuthContextProvider from './context/AuthContext';
 import AppRouter from './routes/AppRouter';
+
+//Redux
+import { Provider } from 'react-redux';
+import store from './store/store';
 
 const App = ({ isInitiallyLogged })=> {
 
   return (
-
-    <AuthContextProvider isInitiallyLogged={isInitiallyLogged}>
-        <AppRouter/>
-    </AuthContextProvider>   
+    <Provider store={store}>
+        <AppRouter isInitiallyLogged={isInitiallyLogged}/>
+    </Provider>   
 
   );
 }
