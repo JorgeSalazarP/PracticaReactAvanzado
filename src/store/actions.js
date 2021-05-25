@@ -165,14 +165,13 @@ export const advertsLoadedFailure = (error)=>({
 
 //Delete advert
 
-export function deleteAdvertAction(id){
+export function deleteAdvertAction(id,history){
     return async (dispatch) =>{
         dispatch(advertsDeletedRequest(id));
-
         try {
             await deleteAdvert(id);
             dispatch(advertsDeletedSuccess());
-          
+            history.push('/');
         } catch (error) {
             dispatch(advertsDeletedFailure(error));
         }
@@ -181,7 +180,6 @@ export function deleteAdvertAction(id){
 }
 
 export const advertsDeletedRequest = (id) =>({
-
     type: ADVERTS_DELETED_REQUEST,
     payload:id
 

@@ -7,5 +7,5 @@ export const getAdverts = state =>
   });
 
 export const getAdvertsLoaded = state => state.adverts.loaded;
-export const getSelectedAdvert = state=> state.adverts.detailAdvert;
+export const getSelectedAdvert = state=> state.adverts.selectedAdvert;
 export const getUi = state => state.ui;

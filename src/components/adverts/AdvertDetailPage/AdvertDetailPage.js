@@ -39,7 +39,9 @@ const AdvertDetailPage = ({history}) => {
 
     
     const onClickDelete = () =>{
-        dispatch(deleteAdvertAction(id));
+
+        dispatch(deleteAdvertAction(id,history));
+      
         
         // try {
         //     await deleteAdvert(id);

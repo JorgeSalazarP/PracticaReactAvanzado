@@ -26,8 +26,8 @@ const initialState = {
     adverts: {
         data:[],
         loaded:false,
-        deleteAdvert: null,
-        detailAdvert: []
+        selectedAdvert: null,
+      
     },
     ui: {
         loading: false,
@@ -119,14 +119,14 @@ export  function adverts(state = initialState.adverts, action){
           return { ...state, loaded: true, data: action.payload };
         case ADVERTS_CREATED_SUCCESS:
         case ADVERTS_DETAIL_SUCCESS:
-          return { ...state, loaded: false, detailAdvert:action.payload };
+          return { ...state, loaded: false, selectedAdvert:action.payload };
         case ADVERTS_DELETED_REQUEST:
-          return{...state, deleteAdvert:action.payload }
+          return{...state, selectedAdvert:action.payload }
         case ADVERTS_DELETED_SUCCESS:
             return{
                 ...state,
-                data: state.data.filter(advert=>advert.id !==state.adverts.deleteAdvert),
-                deleteAdvert:null
+                data: state.data.filter( advert => advert.id !== state.selectedAdvert ),
+                selectedAdvert:null
             }
         default:
           return state;
