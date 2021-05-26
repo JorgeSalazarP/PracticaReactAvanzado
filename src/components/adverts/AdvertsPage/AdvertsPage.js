@@ -1,5 +1,4 @@
 import React from 'react';
-import { getAdvertsTags } from '../../../api/adverts';
 import AdvertsList from './AdvertsList';
 import EmptyList from './EmptyList';
 
@@ -17,7 +16,7 @@ const AdvertsPage = () => {
     React.useEffect(()=>{
       dispatch(advertsLoadAction());
       dispatch(tagsAPIAction());
-    },[]);
+    },[dispatch]);
         
     
     return (

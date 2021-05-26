@@ -19,7 +19,7 @@ const AdvertDetailPage = ({history}) => {
     
     React.useEffect(()=>{
         dispatch(advertsDetailAction(id));
-    },[]);
+    },[dispatch,id]);
    
     
 
