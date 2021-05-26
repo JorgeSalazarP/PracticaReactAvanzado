@@ -15,11 +15,8 @@ const LoginPage = () => {
     const dispatch = useDispatch();
     const { isLoading } = useSelector(getUi);
 
-
-    const handleSubmit = async (credentials) =>{
-        dispatch(loginAction(credentials,isChecked));
+    const handleSubmit = async (credentials) => (await dispatch(loginAction(credentials,isChecked)));
         
-    }
     
 
     return (
@@ -33,7 +30,7 @@ const LoginPage = () => {
             />
             {error && <Error message={error.message}/>}
 
-            { isLoading && <Spinner/>}
+            { isLoading && <Spinner/> }
            
 
         </div>

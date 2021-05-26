@@ -18,9 +18,7 @@ const AdvertsList = ({ adverts, ...props }) => {
     const clickSearch = selectedFilter =>{
        
         setFilteredAdverts(
-
             adverts.filter(advert=>{
-                
                 const filterByName = advert.name.toLowerCase().includes(selectedFilter.name.toLowerCase())
 
                 let filterByTags = true;

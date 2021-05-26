@@ -4,13 +4,13 @@ import { getAdvertsTags } from '../../../api/adverts';
 import NewAdvertForm from './NewAdvertForm';
 import Spinner from '../../shared/Spinner';
 import { createNewAdvertAction } from '../../../store/actions';
-import { getTagsAPI } from '../../../store/selectors';
+import { getTagsAPI, getUi } from '../../../store/selectors';
 
 
 const NewAdvertPage = ({ history }) => {
     
     const dispatch = useDispatch();
-    const loading = useSelector(state => state.adverts.loading);
+    const { loading } = useSelector(getUi);
     const tagsAPI = useSelector(getTagsAPI);
    
         
