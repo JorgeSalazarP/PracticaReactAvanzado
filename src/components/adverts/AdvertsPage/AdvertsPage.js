@@ -5,33 +5,20 @@ import EmptyList from './EmptyList';
 
 //REDUX
 import { useDispatch, useSelector } from 'react-redux';
-import { advertsLoadAction } from '../../../store/actions';
-import { getAdverts } from '../../../store/selectors';
+import { advertsLoadAction, tagsAPIAction } from '../../../store/actions';
+import { getAdverts , getTagsAPI } from '../../../store/selectors';
 
 
 const AdvertsPage = () => {
 
-    const [tagsAPI,setTagsAPI] = React.useState([]);
     const dispatch = useDispatch();
     const adverts = useSelector(getAdverts);
+    const tagsAPI = useSelector(getTagsAPI);
     React.useEffect(()=>{
       dispatch(advertsLoadAction());
+      dispatch(tagsAPIAction());
     },[]);
-    
-
-
-    // React.useEffect(()=>{
-      
-    //   getAdverts()
-    //   .then(setAdverts)
-    //   .then(()=>getAdvertsTags().then(setTagsAPI))
-    //   .catch((error)=>{
-    //       history.replace('/404')}
-    //   );
-    // },[history]);
-    
-   
-    
+        
     
     return (
       <React.Fragment >

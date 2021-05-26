@@ -16,6 +16,9 @@ import {
     ADVERTS_DETAIL_REQUEST,
     ADVERTS_DETAIL_SUCCESS,
     ADVERTS_DETAIL_FAILURE,
+    TAGS_LOADED_REQUEST,
+    TAGS_LOADED_SUCCESS,
+    TAGS_LOADED_FAILURE,
     UI_RESET_ERROR
 } from '../types';
 
@@ -26,8 +29,9 @@ const initialState = {
     adverts: {
         data:[],
         loaded:false,
-        selectedAdvert: null,
-      
+        deleteAdvert: null,
+        detailAdvert:[],
+        tagsAPI:[]
     },
     ui: {
         loading: false,
@@ -54,80 +58,25 @@ export function logged(state = initialState.logged, action){
 
 
 
-
-// export  function adverts(state = initialState.adverts, action){
-//     switch (action.type) {
-//         case ADVERTS_CREATED_REQUEST:
-//         case ADVERTS_DETAIL_REQUEST:
-//             return{
-//                 ...state,
-//                 loading: action.payload
-//             }   
-//         case ADVERTS_CREATED_SUCCESS:
-//             return{
-//                 ...state,
-//                 loading: false,
-//                 adverts:[...state.adverts, action.payload]
-//             }
-//         case ADVERTS_CREATED_FAILURE:
-//         case ADVERTS_LOADED_FAILURE:
-//         case ADVERTS_DELETED_FAILURE:
-//         case ADVERTS_DETAIL_FAILURE:
-//             return{
-//                 ...state,
-//                 loading: false,
-//                 error: action.payload
-//             }
-//         case ADVERTS_LOADED_SUCCESS:
-//             return{
-//                 ...state,
-//                 loading: false,
-//                 error: null,
-//                 adverts:action.payload
-//             }
-        
-//         case ADVERTS_DELETED_REQUEST:
-//             return{
-//                 ...state,
-//                 deleteAdvert:action.payload
-//             }
-        
-//         case ADVERTS_DELETED_SUCCESS:
-//             return{
-//                 ...state,
-//                 adverts: state.adverts.filter(advert=>advert.id !==state.deleteAdvert),
-//                 deleteAdvert:null
-//             }
-        
-//         case ADVERTS_DETAIL_SUCCESS:
-//             return{
-//                 ...state,
-//                 loading: false,
-//                 detailAdvert:action.payload
-//             }
-
-//         default:
-//             return state;
-//     }
-
-// }
-
-
-export  function adverts(state = initialState.adverts, action){
+export function adverts(state = initialState.adverts, action){
     switch (action.type) {
         case ADVERTS_LOADED_SUCCESS:
-          return { ...state, loaded: true, data: action.payload };
+            return { ...state, loaded: true, data: action.payload };
         case ADVERTS_CREATED_SUCCESS:
+            return { ...state, loaded: false, data:[...state.data, action.payload]}
         case ADVERTS_DETAIL_SUCCESS:
-          return { ...state, loaded: false, selectedAdvert:action.payload };
+            return { ...state, loaded: false, detailAdvert:action.payload };
+        case TAGS_LOADED_SUCCESS:
+            return { ...state, loaded: true, tagsAPI: action.payload };
         case ADVERTS_DELETED_REQUEST:
-          return{...state, selectedAdvert:action.payload }
+            return {...state, deleteAdvert:action.payload }
         case ADVERTS_DELETED_SUCCESS:
             return{
                 ...state,
-                data: state.data.filter( advert => advert.id !== state.selectedAdvert ),
-                selectedAdvert:null
+                data: state.data.filter( advert => advert.id !== state.deleteAdvert ),
+                deleteAdvert:null
             }
+
         default:
           return state;
       }
@@ -135,14 +84,13 @@ export  function adverts(state = initialState.adverts, action){
 }
 
 
-
-
-export  function ui(state = initialState.ui, action) {
+export function ui(state = initialState.ui, action) {
     if (action.error) {
         return { ...state, loading: false, error: action.payload };
     }
     switch (action.type) {
         case AUTH_LOGIN_REQUEST:
+        case TAGS_LOADED_REQUEST:
         case ADVERTS_LOADED_REQUEST:
         case ADVERTS_DETAIL_REQUEST:
         case ADVERTS_CREATED_REQUEST:
@@ -151,14 +99,13 @@ export  function ui(state = initialState.ui, action) {
         case ADVERTS_LOADED_SUCCESS:
         case ADVERTS_CREATED_SUCCESS:
         case ADVERTS_DETAIL_SUCCESS:
-        return { ...state, loading: false };
+            return { ...state, loading: false };
         case UI_RESET_ERROR:
-        return {
-          ...state,
-          error: null,
-        };
+            return {...state,error: null};
         default:
         return state;
     }
 }
+
+
 

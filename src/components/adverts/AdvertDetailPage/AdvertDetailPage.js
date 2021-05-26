@@ -21,35 +21,10 @@ const AdvertDetailPage = ({history}) => {
         dispatch(advertsDetailAction(id));
     },[]);
    
-    // React.useEffect(()=>{
-    //     const getAdvertById = async ()=>{
-    //         try {
-    //             setIsLoading(true);
-    //             setAdvertDetail(await getAdvertDetail(id));
-    //         } catch (error) {
-    //             history.replace('/404');
-    //         }finally{
-    //             setIsLoading(false);
-    //         }
-    //     }
-
-    //     getAdvertById();
-        
-    // },[setIsLoading,history,id]);
+    
 
     
-    const onClickDelete = () =>{
-
-        dispatch(deleteAdvertAction(id,history));
-      
-        
-        // try {
-        //     await deleteAdvert(id);
-        //     history.push('/');
-        // } catch (error) {
-        //     history.replace('/404');
-        // }
-    }
+    const onClickDelete = () => (dispatch(deleteAdvertAction(id,history)));
 
   
     return (

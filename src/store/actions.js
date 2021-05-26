@@ -1,13 +1,13 @@
-import { createNewAdvert, getAdverts, deleteAdvert, getAdvertDetail } from '../api/adverts';
+import { createNewAdvert, getAdverts, deleteAdvert, getAdvertDetail, getAdvertsTags } from '../api/adverts';
 import { login } from '../api/auth';
 import { getAdvertsLoaded, getSelectedAdvert } from './selectors';
 import {
-    ADVERTS_LOADED_REQUEST,
     AUTH_LOGGED,
     AUTH_LOGIN_REQUEST,
     AUTH_LOGIN_SUCCESS,
     AUTH_LOGIN_FAILURE,
     AUTH_LOGOUT,
+    ADVERTS_LOADED_REQUEST,
     ADVERTS_LOADED_SUCCESS,
     ADVERTS_LOADED_FAILURE,
     ADVERTS_CREATED_REQUEST,
@@ -19,12 +19,13 @@ import {
     ADVERTS_DETAIL_REQUEST,
     ADVERTS_DETAIL_SUCCESS,
     ADVERTS_DETAIL_FAILURE,
+    TAGS_LOADED_REQUEST,
+    TAGS_LOADED_SUCCESS,
+    TAGS_LOADED_FAILURE,
     UI_RESET_ERROR
 } from './types';
 
 //Login
-
-
 export function loggedAction(isLogged){
     return (dispatch) =>{
         dispatch(authLogged(isLogged));
@@ -37,21 +38,6 @@ export const authLogged = (isLogged) =>({
     payload: isLogged
 
 });
-
-
-
-export function loginAction(credentials,isChecked){
-   return async(dispatch) =>{
-        dispatch(authLoginRequest());
-        try {
-            await login(credentials,isChecked);
-            dispatch(authLoginSuccess());
-        } catch (error) {
-            dispatch(authLoginFailure(error));
-        }
-
-   }
-};
 
 export const authLoginRequest = () => {
     return {
@@ -75,13 +61,41 @@ export const authLoginFailure = error => {
     };
 };
   
+export function loginAction(credentials,isChecked){
+   return async(dispatch) =>{
+        dispatch(authLoginRequest());
+        try {
+            await login(credentials,isChecked);
+            dispatch(authLoginSuccess());
+        } catch (error) {
+            dispatch(authLoginFailure(error));
+        }
+
+   }
+};
+
+
 
 
 
 //Create new advert
+export const advertsCreatedRequest = () =>({
+    type: ADVERTS_CREATED_REQUEST,
+    payload:true
+});
 
-export function createNewAdvertAction(newAdvert){
+export const advertCreatedSuccess = (adverts) =>({
+    type: ADVERTS_CREATED_SUCCESS,
+    payload: adverts
 
+});
+
+export const advertCreatedFailure = (stateError) =>({
+    type: ADVERTS_CREATED_FAILURE,
+    payload:stateError
+});
+
+export function createNewAdvertAction(newAdvert, history){
     return async (dispatch) =>{
         dispatch (advertsCreatedRequest());
         try {
@@ -97,7 +111,7 @@ export function createNewAdvertAction(newAdvert){
                 
                 await createNewAdvert(data);
                 dispatch(advertCreatedSuccess(data));
-            
+                history.push('/');
         } catch (error) {
             dispatch(advertCreatedFailure(true));
             
@@ -106,26 +120,26 @@ export function createNewAdvertAction(newAdvert){
 
 }
 
-export const advertsCreatedRequest = () =>({
-    type: ADVERTS_CREATED_REQUEST,
-    payload:true
-});
 
-export const advertCreatedSuccess = (adverts) =>({
-
-    type: ADVERTS_CREATED_SUCCESS,
-    payload: adverts
-
-});
-
-export const advertCreatedFailure = (stateError) =>({
-
-    type: ADVERTS_CREATED_FAILURE,
-    payload:stateError
-})
 
 
 //Loaded adverts 
+export const advertsLoadedRequest = () =>({
+    type: ADVERTS_LOADED_REQUEST,
+   
+});
+
+export const advertsLoadedSuccess = (adverts) =>({
+    type: ADVERTS_LOADED_SUCCESS,
+    payload: adverts
+});
+
+export const advertsLoadedFailure = (error)=>({
+    type: ADVERTS_LOADED_FAILURE,
+    payload:error,
+    error:true
+
+});
 
 export function advertsLoadAction(){
     return async(dispatch,getState) =>{
@@ -145,26 +159,55 @@ export function advertsLoadAction(){
 
 }
 
-export const advertsLoadedRequest = () =>({
-    type: ADVERTS_LOADED_REQUEST,
-   
+
+
+//Loaded tags 
+export const advertsTagsAPIRequest = () =>({
+    type: TAGS_LOADED_REQUEST,
 });
 
-export const advertsLoadedSuccess = (adverts) =>({
-    type: ADVERTS_LOADED_SUCCESS,
-    payload: adverts
+export const advertsTagsAPISuccess = (tags) =>({
+    type: TAGS_LOADED_SUCCESS,
+    payload: tags
 });
 
-export const advertsLoadedFailure = (error)=>({
-    type: ADVERTS_LOADED_FAILURE,
+export const advertsTagsAPIFailure = (error)=>({
+    type: TAGS_LOADED_FAILURE,
     payload:error,
     error:true
 
 });
 
 
-//Delete advert
 
+
+
+export function tagsAPIAction(){
+    return async(dispatch,getState) =>{
+        dispatch(advertsTagsAPIRequest());
+        // const advertsTagAPI = getAdvertsTags(getState());
+        // if (advertsTagAPI) {
+        //   return;
+        // }
+        try {
+            const tags = await getAdvertsTags();
+            dispatch(advertsTagsAPISuccess(tags));
+        } catch (error) {
+            dispatch(advertsTagsAPIFailure(error));
+        }
+    }
+
+}
+
+
+
+
+
+
+
+
+
+//Delete advert
 export function deleteAdvertAction(id,history){
     return async (dispatch) =>{
         dispatch(advertsDeletedRequest(id));
