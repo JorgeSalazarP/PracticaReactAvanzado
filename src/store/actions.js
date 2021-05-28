@@ -1,5 +1,5 @@
 import { createNewAdvert, getAdverts, deleteAdvert, getAdvertDetail, getAdvertsTags } from '../api/adverts';
-import { login } from '../api/auth';
+import { login, logout } from '../api/auth';
 import { getAdvertsLoaded, getSelectedAdvert } from './selectors';
 import {
     AUTH_LOGGED,
@@ -7,6 +7,7 @@ import {
     AUTH_LOGIN_SUCCESS,
     AUTH_LOGIN_FAILURE,
     AUTH_LOGOUT,
+    AUTH_LOGOUT_FAILURE,
     ADVERTS_LOADED_REQUEST,
     ADVERTS_LOADED_SUCCESS,
     ADVERTS_LOADED_FAILURE,
@@ -185,10 +186,10 @@ export const advertsTagsAPIFailure = (error)=>({
 export function tagsAPIAction(){
     return async(dispatch,getState) =>{
         dispatch(advertsTagsAPIRequest());
-        // const advertsTagAPI = getAdvertsTags(getState());
-        // if (advertsTagAPI) {
-        //   return;
-        // }
+        const advertsTagAPI = getAdvertsTags(getState());
+        if (advertsTagAPI) {
+          return;
+        }
         try {
             const tags = await getAdvertsTags();
             dispatch(advertsTagsAPISuccess(tags));
@@ -276,3 +277,31 @@ export const advertsDetailFailure = (error)=>({
 });
 
 
+//logout
+
+export const authLogoutSuccess = () => ({
+    type: AUTH_LOGOUT
+});
+
+
+export const advertsLogoutFailure = (error)=>({
+    type:  AUTH_LOGOUT_FAILURE,
+    payload:error,
+    error:true
+
+});
+
+
+export function authLogoutAction(history){
+    return async (dispatch)=>{
+        
+        try {
+            dispatch(authLogoutSuccess());
+            await logout();
+            history.replace('/login');
+        } catch (error) {
+            dispatch(advertsLogoutFailure(error));
+        }
+    }
+
+}

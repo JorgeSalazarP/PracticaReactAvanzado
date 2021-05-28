@@ -1,36 +1,28 @@
 import React from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
-import { logout } from '../../api/auth';
 import Modal from '../adverts/AdvertDetailPage/Modal';
 import '../adverts/AdvertDetailPage/Modal.css';
 
-
+import { useDispatch } from 'react-redux';
+import { authLogoutAction } from '../../store/actions';
 
 const Header = () => {
-
     const history = useHistory();
     const [isOpenModal,setIsOpenModal] = React.useState(false);
+    const dispatch = useDispatch();
 
-    const openModal = () =>{
-        setIsOpenModal(!isOpenModal);
-    }
-    
-    const onClickDelete = () =>{
-        logout();
-        //setIsLogged(false);
-        history.replace('/login');
-            
-    }
+    const openModal = () =>(setIsOpenModal(!isOpenModal));
+
+    const logoutSession = () => dispatch(authLogoutAction(history));
+    const onClickDelete = () =>(logoutSession());
+       
 
     return (
         <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
-            
-
             <div className="navbar-collapse">
                 <div className="navbar-nav "  
                     style={{fontSize: 20, padding: 8}}
                 >
-
                     <NavLink 
                         activeClassName="active"
                         className="nav-item nav-link "

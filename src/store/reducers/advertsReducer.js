@@ -4,6 +4,7 @@ import {
     AUTH_LOGIN_SUCCESS,
     AUTH_LOGIN_FAILURE,
     AUTH_LOGOUT,
+    AUTH_LOGOUT_FAILURE,
     ADVERTS_LOADED_REQUEST,
     ADVERTS_LOADED_SUCCESS,
     ADVERTS_LOADED_FAILURE,
@@ -41,7 +42,6 @@ const initialState = {
 }
 
 export function logged(state = initialState.logged, action){
-
     switch (action.type) {
         case AUTH_LOGGED:
             return action.payload;
