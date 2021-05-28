@@ -76,9 +76,6 @@ export function loginAction(credentials,isChecked){
 };
 
 
-
-
-
 //Create new advert
 export const advertsCreatedRequest = () =>({
     type: ADVERTS_CREATED_REQUEST,
@@ -180,16 +177,9 @@ export const advertsTagsAPIFailure = (error)=>({
 });
 
 
-
-
-
 export function tagsAPIAction(){
     return async(dispatch,getState) =>{
         dispatch(advertsTagsAPIRequest());
-        const advertsTagAPI = getAdvertsTags(getState());
-        if (advertsTagAPI) {
-          return;
-        }
         try {
             const tags = await getAdvertsTags();
             dispatch(advertsTagsAPISuccess(tags));
@@ -199,14 +189,6 @@ export function tagsAPIAction(){
     }
 
 }
-
-
-
-
-
-
-
-
 
 //Delete advert
 export function deleteAdvertAction(id,history){

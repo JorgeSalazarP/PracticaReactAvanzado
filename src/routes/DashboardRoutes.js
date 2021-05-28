@@ -5,18 +5,18 @@ import { AdvertDetailPage, AdvertsPage, NewAdvertPage } from '../components/adve
 import { Footer } from '../components/layout/Footer';
 
 
-
 const DashboardRoutes = () => {
     
     return (
         <div>
         <Header/>
-           
             <div className = "container mt-5">
                 <Switch>
                     <Route exact path='/advert/new' component={NewAdvertPage}/>
                     <Route path='/advert/:id' component={AdvertDetailPage}/>
-                    <Route exact path='/' component={AdvertsPage}/>
+                    <Route exact path='/'> 
+                        <Redirect to="/adverts"/>
+                    </Route>
                     <Route exact path='/adverts' component={AdvertsPage}/>
                     <Route path="/404">
                         <div
@@ -32,10 +32,8 @@ const DashboardRoutes = () => {
                     <Route>
                         <Redirect to="/404" />
                     </Route>
-                    
                 </Switch>
             </div>
-
         <Footer />
         </div>
 
