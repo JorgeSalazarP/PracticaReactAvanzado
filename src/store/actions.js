@@ -142,7 +142,6 @@ export const advertsLoadedFailure = (error)=>({
 export function advertsLoadAction(){
     return async(dispatch,getState) =>{
         dispatch(advertsLoadedRequest());
-
         const advertsLoaded = getAdvertsLoaded(getState());
         if (advertsLoaded) {
           return;
