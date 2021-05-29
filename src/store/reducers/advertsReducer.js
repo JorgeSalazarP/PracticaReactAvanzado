@@ -25,7 +25,7 @@ import {
 
 
 
-const initialState = {
+export const initialState = {
     logged: false,
     adverts: {
         data:[],
