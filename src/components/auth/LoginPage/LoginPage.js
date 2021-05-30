@@ -3,7 +3,7 @@ import Error from '../../error/Error';
 import Spinner from '../../shared/Spinner';
 import LoginForm from './LoginForm';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginAction, resetError } from '../../../store/actions';
+import { loginAction } from '../../../store/actions';
 import { getUi } from '../../../store/selectors';
 import './LoginPage.css';
 
