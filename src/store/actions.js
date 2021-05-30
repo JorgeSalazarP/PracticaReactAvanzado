@@ -177,7 +177,7 @@ export const advertsTagsAPIFailure = (error)=>({
 
 
 export function tagsAPIAction(){
-    return async(dispatch,getState) =>{
+    return async(dispatch) =>{
         dispatch(advertsTagsAPIRequest());
         try {
             const tags = await getAdvertsTags();
@@ -286,3 +286,11 @@ export function authLogoutAction(history){
     }
 
 }
+
+
+export const resetError = () => {
+    return {
+        
+      type: UI_RESET_ERROR,
+    };
+};

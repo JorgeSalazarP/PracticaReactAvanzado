@@ -7,7 +7,7 @@ import { AUTH_LOGIN_REQUEST, AUTH_LOGIN_SUCCESS } from './types';
 
 const middleware = [thunk];
 const mockStore = configureStore(middleware);
-const store = mockStore({});
+ const store = mockStore({});
 
 describe('loginAction', () => {
   describe('when login api resolves', () => {
