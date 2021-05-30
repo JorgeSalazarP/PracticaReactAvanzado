@@ -1,6 +1,6 @@
 import { createNewAdvert, getAdverts, deleteAdvert, getAdvertDetail, getAdvertsTags } from '../api/adverts';
 import { login, logout } from '../api/auth';
-import { getAdvertsLoaded, getSelectedAdvert } from './selectors';
+import { getAdvertsLoaded } from './selectors';
 import {
     AUTH_LOGGED,
     AUTH_LOGIN_REQUEST,
@@ -97,6 +97,7 @@ export function createNewAdvertAction(newAdvert, history){
     return async (dispatch) =>{
         dispatch (advertsCreatedRequest());
         try {
+
                 const data = new FormData();
                 data.append('name',newAdvert.name);
                 data.append('price',newAdvert.price);
@@ -223,12 +224,12 @@ export const advertsDeletedFailure = (error) =>({
 });
 
 //detail advert
-export function advertsDetailAction(adverdtId){
+export function advertsDetailAction(advertId){
 
-    return async (dispatch, getState)=>{
+    return async (dispatch)=>{
         dispatch(advertsDetailRequest());
         try {
-            const advert = await getAdvertDetail(adverdtId);
+            const advert = await getAdvertDetail(advertId);
             dispatch(advertsDetailSuccess(advert));
         } catch (error) {
             dispatch(advertsDetailFailure(error));

@@ -15,7 +15,7 @@ const AppRouter = ({isInitiallyLogged}) => {
     const dispatch = useDispatch();
     React.useEffect(()=>{
         dispatch(loggedAction(isInitiallyLogged));
-    },[]);    
+    },[dispatch,isInitiallyLogged]);    
 
     return (
       <Router>
