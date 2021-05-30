@@ -7,6 +7,7 @@ import { AUTH_LOGIN_REQUEST, AUTH_LOGIN_SUCCESS } from './types';
 
 const middleware = [thunk];
 const mockStore = configureStore(middleware);
+const store = mockStore({});
 
 describe('loginAction', () => {
   describe('when login api resolves', () => {
@@ -15,7 +16,6 @@ describe('loginAction', () => {
     const login = jest.fn().mockResolvedValue();
 
     test('should dispatch an AUTH_LOGIN_SUCCESS action', async () => {
-      const store = mockStore([]);
       await store.dispatch(loginAction(credentials,isChecked));
       const actions = store.getActions();
       expect(actions).toEqual([

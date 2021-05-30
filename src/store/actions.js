@@ -97,7 +97,6 @@ export function createNewAdvertAction(newAdvert, history){
     return async (dispatch) =>{
         dispatch (advertsCreatedRequest());
         try {
-            
                 const data = new FormData();
                 data.append('name',newAdvert.name);
                 data.append('price',newAdvert.price);
@@ -106,9 +105,9 @@ export function createNewAdvertAction(newAdvert, history){
                 if(newAdvert.photo){
                     data.append('photo',newAdvert.photo);
                 }
-                
-                await createNewAdvert(data);
-                dispatch(advertCreatedSuccess(data));
+                const { id: advertId } = await createNewAdvert(data);
+                const createdAdvert = await getAdvertDetail(advertId);
+                dispatch(advertCreatedSuccess(createdAdvert));
                 history.push('/');
         } catch (error) {
             dispatch(advertCreatedFailure(true));

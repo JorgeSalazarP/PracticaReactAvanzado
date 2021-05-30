@@ -6,6 +6,8 @@ export const getAdverts = state =>
     return -1;
   });
 
+ 
+
 export const getAdvertsLoaded = state => state.adverts.loaded;
 
 export const getSelectedAdvert = state=> state.adverts.detailAdvert;

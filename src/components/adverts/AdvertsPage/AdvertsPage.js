@@ -18,7 +18,6 @@ const AdvertsPage = () => {
       dispatch(tagsAPIAction());
     },[dispatch]);
         
-    
     return (
       <React.Fragment >
             
