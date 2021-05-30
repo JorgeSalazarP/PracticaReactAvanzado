@@ -38,6 +38,7 @@ const LoginForm = ({ onSubmit, setIsChecked }) => {
                         <input 
                             type="email"
                             name="email"
+                            className="loginForm-field"
                             value={email}
                             onChange={handleChange}
                         />
@@ -48,6 +49,7 @@ const LoginForm = ({ onSubmit, setIsChecked }) => {
                         <input 
                             type="password"
                             name="password"
+                            className="loginForm-field"
                             value={password}
                             onChange={handleChange}
                         />
