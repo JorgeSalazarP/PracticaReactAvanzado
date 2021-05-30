@@ -15,17 +15,9 @@ describe('LoginForm', ()=>{
 
     });
 
-    test('snapshot testing',()=>{
-        const wrapper = render();
-        expect(wrapper).toMatchSnapshot();
-    });
-    
-
-
     test('should submit credentials',()=>{
         const credentials = { email: 'example@example.com', password: '1234'};
         const wrapper = render();
-        
         const emailField = wrapper.find('.loginForm-field').at(0);
         emailField
         .props()
@@ -35,10 +27,13 @@ describe('LoginForm', ()=>{
         passwordField
         .props()
         .onChange({ target: {name: 'password', value: credentials.password }});
-        expect(wrapper).toMatchSnapshot();
-    });
 
-    
+        const form = wrapper.find('form');
+        form.simulate('submit', { preventDefault:()=> {} });
+
+        expect(wrapper.find('.loginSubmit').props().disabled).toBe(false);
+        expect(props.onSubmit).toHaveBeenCalledWith(credentials);
+    });
 
     
 

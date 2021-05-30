@@ -66,7 +66,7 @@ const LoginForm = ({ onSubmit, setIsChecked }) => {
                     <div className="form_field">
                         <input 
                             type="submit" 
-                            className="btn btn-primary btn-lg btn-block" 
+                            className="btn btn-primary btn-lg btn-block loginSubmit" 
                             value="Login in" 
                             disabled={!email || !password}
                         />

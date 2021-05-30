@@ -1,0 +1,141 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoginForm should submit credentials 1`] = `
+<div
+  className="container container_form "
+>
+  <h1>
+    Login in to Nodepop
+  </h1>
+  <form
+    onSubmit={[Function]}
+  >
+    <div
+      className="form_field"
+    >
+      <label
+        htmlFor="email"
+      >
+        Email
+      </label>
+      <input
+        className="loginForm-field"
+        name="email"
+        onChange={[Function]}
+        type="email"
+        value="example@example.com"
+      />
+    </div>
+    <div
+      className="form_field"
+    >
+      <label
+        htmlFor="password"
+      >
+        Password
+      </label>
+      <input
+        className="loginForm-field"
+        name="password"
+        onChange={[Function]}
+        type="password"
+        value="1234"
+      />
+    </div>
+    <div
+      className="form_field"
+    >
+      <label
+        htmlFor="checkbox"
+      >
+        Remember password
+      </label>
+      <input
+        name="checkbox"
+        onChange={[Function]}
+        type="checkbox"
+      />
+    </div>
+    <div
+      className="form_field"
+    >
+      <input
+        className="btn btn-primary btn-lg btn-block loginSubmit"
+        disabled={false}
+        type="submit"
+        value="Login in"
+      />
+    </div>
+  </form>
+</div>
+`;
+
+exports[`LoginForm snapshot testing 1`] = `
+<div
+  className="container container_form "
+>
+  <h1>
+    Login in to Nodepop
+  </h1>
+  <form
+    onSubmit={[Function]}
+  >
+    <div
+      className="form_field"
+    >
+      <label
+        htmlFor="email"
+      >
+        Email
+      </label>
+      <input
+        className="loginForm-field"
+        name="email"
+        onChange={[Function]}
+        type="email"
+        value=""
+      />
+    </div>
+    <div
+      className="form_field"
+    >
+      <label
+        htmlFor="password"
+      >
+        Password
+      </label>
+      <input
+        className="loginForm-field"
+        name="password"
+        onChange={[Function]}
+        type="password"
+        value=""
+      />
+    </div>
+    <div
+      className="form_field"
+    >
+      <label
+        htmlFor="checkbox"
+      >
+        Remember password
+      </label>
+      <input
+        name="checkbox"
+        onChange={[Function]}
+        type="checkbox"
+      />
+    </div>
+    <div
+      className="form_field"
+    >
+      <input
+        className="btn btn-primary btn-lg btn-block loginSubmit"
+        disabled={true}
+        type="submit"
+        value="Login in"
+      />
+    </div>
+  </form>
+</div>
+`;
